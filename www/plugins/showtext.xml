@@ -31,7 +31,7 @@
 
 	<action name="showtext_xml">
 		set(showtext_style, DEFAULT);
-		if(%2 != null, ifnot(textstyle[%2], trace('textstyle "%2" not found'); , set(showtext_style,%2)); );
+		if('%2' != 'null', ifnot(textstyle['%2'], trace('textstyle "%2" not found'); , set(showtext_style,'%2')); );
 
 		set(showtext_text, '%1');
 		if(showtext_text != showtext_prevtext,
