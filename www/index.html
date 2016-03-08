@@ -25,6 +25,14 @@
 			//window.plugins.insomnia.allowSleepAgain();
 		
 		}
+		$(document).ready(function() {
+			setTimeout(function(){
+				var isCordovaApp = !!window.cordova;
+				alert(isCordovaApp);
+				//$("body").html("");
+				
+			}, 1000);
+		});
 	</script>
 </head>
 <body onload="init();">
