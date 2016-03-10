@@ -3,14 +3,16 @@
 
 	<action name="smgroup_startup" type="Javascript" autorun="">
 		<![CDATA[
+			/*
 			setTimeout(function(){
 				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    2222');
 				var isCordovaApp = !window.cordova;
-				if(isCordovaApp)
+				if(!isCordovaApp)
 				{
 					$("body").html("<center style='text-align: center;font-family: tahoma;font-size: 15px;position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;display: table;vertical-align: middle;width: 100%;'>شما مجاز به استفاده از این برنامه نمی باشید</center>");
 				}
 			}, 1000);
+			*/
 		]]>
 	</action>
 	
