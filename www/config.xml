@@ -46,8 +46,8 @@
     <!--<gap:plugin name="org.apache.cordova.media-capture" source="npm" />-->
     <gap:plugin name="org.apache.cordova.console" source="npm" />
     <gap:plugin name="org.apache.cordova.device" source="npm" />
-    <gap:plugin name="org.apache.cordova.device-motion" source="npm" />
-    <gap:plugin name="org.apache.cordova.device-orientation" source="npm" />
+    <!--<gap:plugin name="org.apache.cordova.device-motion" source="npm" />-->
+    <!--<gap:plugin name="org.apache.cordova.device-orientation" source="npm" />-->
     <gap:plugin name="org.apache.cordova.dialogs" source="npm" />
     <gap:plugin name="org.apache.cordova.file" source="npm" />
     <gap:plugin name="org.apache.cordova.file-transfer" source="npm" />
