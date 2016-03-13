@@ -112,11 +112,11 @@
     <gap:splash src="images/splash/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xhdpi" />
     <gap:splash src="images/splash/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xxhdpi" />
 	
-    <gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		width="320"		height="480" />
-    <gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		width="640"		height="960" />
-    <gap:splash src="images/splash/screen-iphone-landscape-568h-2x.png"	gap:platform="ios"		width="640"		height="1136" />
-    <gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		width="768"		height="1024" />
-    <gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		width="1536"	height="2048" />
+    <gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		height="320"	width="480" />
+    <gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		height="640"	width="960" />
+    <gap:splash src="images/splash/screen-iphone-landscape-568h-2x.png"	gap:platform="ios"		height="640"	width="1136" />
+    <gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		height="768"	width="1024" />
+    <gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		height="1536"	width="2048" />
 
 
 
