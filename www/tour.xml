@@ -2,7 +2,10 @@
 	
 	<action name="smgroup_startup" type="Javascript" autorun="">
 		<![CDATA[
-			alert("786");
+			var pathname = window.location.pathname; // Returns path only
+			var url      = window.location.href;     // Returns full URL
+			alert(url);
+			alert(pathname);
 			/*
 			setTimeout(function(){
 				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    2222');
