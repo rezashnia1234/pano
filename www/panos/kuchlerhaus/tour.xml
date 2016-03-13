@@ -14,10 +14,7 @@
 		<preview url="aussen.tiles/preview.jpg" />
 
 		<image>
-			<cube url="aussen.tiles/pano_%s.jpg" />
-			<mobile devices="iOS">
-				<cube url="aussen.tiles/mobile_%s.jpg" />
-			</mobile>
+			<cube url="aussen.tiles/mobile_%s.jpg" />
 		</image>
 
 		<hotspot name="scene_galerie" style="arrowspot" ath="-66.1" atv="3.3" rotate="70"  depth="10000" onclick="goto(scene_galerie);" />
@@ -31,10 +28,7 @@
 		<preview url="verkaufsraum3eingang.tiles/preview.jpg" />
 
 		<image prealign="0|90|0">
-			<cube url="verkaufsraum3eingang.tiles/pano_%s.jpg" />
-			<mobile devices="iOS">
-				<cube url="verkaufsraum3eingang.tiles/mobile_%s.jpg" />
-			</mobile>
+			<cube url="verkaufsraum3eingang.tiles/mobile_%s.jpg" />
 		</image>
 
 		<hotspot name="spot_aussen"  style="arrowspot" ath="182" atv="20"   rotate="0"   depth="6000"  onclick="goto(scene_aussen);" />
@@ -48,10 +42,7 @@
 		<preview url="galerie.tiles/preview.jpg" />
 
 		<image prealign="0|180|0">
-			<cube url="galerie.tiles/pano_%s.jpg" />
-			<mobile devices="iOS">
-				<cube url="galerie.tiles/mobile_%s.jpg" />
-			</mobile>
+			<cube url="galerie.tiles/mobile_%s.jpg" />
 		</image>
 
 		<hotspot name="spot_eingang" style="arrowspot" ath="40"  atv="5"  rotate="70" depth="8000" onclick="goto(scene_verkaufsraum3eingang);" />
