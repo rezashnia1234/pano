@@ -3,6 +3,7 @@
 	<action name="startup">
 		loadscene("home", null, MERGE);
 		smgroup_startup();
+		start_vr();
 	</action>
 	
 	<action name="smgroup_startup" type="Javascript" autorun="">
@@ -56,14 +57,6 @@
 
 		<!-- the intro scene 3d hotspots -->
 
-		<!-- krpano VR logo -->
-		<hotspot name="krpanologo" distorted="true" enabled="false"
-				 url="texts.png" crop="0|0|440|90"
-				 ath="0" atv="0"
-				 depth="2000"
-				 ty="-1000"
-				 />
-
 		<!-- the floor platform -->
 		<hotspot name="floor" zorder="1" distorted="true" enabled="false"
 				 url="black.png" width="250" height="250" alpha="0.5"
@@ -98,9 +91,10 @@
 
 		<!-- left panel -->
 		<hotspot name="p2" style="panel" ath="-55" atv="0" />
-			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="30" oy="30" onclick="changepano( loadscene('scene_model', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="-30" oy="-30" onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_txt"    style="thumb" zorder="2" ath="-55" atv="0" url="texts.png" crop="4|360|840|88" scale="0.3" oy="82" enabled="false" />
+			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg"		 scale="0.3" 	ox="-90"	oy="-40"	onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-model/thumb.jpg"	 scale="0.3" 	ox="-0"		oy="-40"	onclick="changepano( loadscene('scene_model', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb3" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-car/thumb.jpg"	 scale="0.3" 	ox="90"		oy="-40"	onclick="changepano( loadscene('scene_object_car', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<!--<hotspot name="p2_txt"    style="thumb" zorder="2" ath="-55" atv="0" url="texts.png" crop="4|360|840|88" scale="0.3" 	oy="82"		 enabled="false" />-->
 
 
 		<!-- right panel -->
@@ -236,29 +230,30 @@
 	
 	
 	<scene name="scene_object" title="object" onstart="" thumburl="panos/object/thumb.jpg">
-
 		<preview url="panos/object/preview.jpg" />
-
 		<image >
-			<cube url="panos/object/mobile_%s.jpg" />
+			<cube url="panos/object/bg.jpg" />
 		</image>
-			
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" />
-
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" capture="false" zorder="0" />		
 	</scene>
 	
-	<scene name="scene_model" title="model" onstart="" thumburl="panos/object/thumb.jpg">
-
-		<preview url="panos/object/preview.jpg" />
-
+	<scene name="scene_object_car" title="object" onstart="" thumburl="panos/object-car/thumb.jpg">
+		<preview url="panos/object-car/preview.jpg" />
 		<image >
-			<cube url="panos/object/mobile_%s.jpg" />
+			<cube url="panos/object-car/bg.jpg" />
 		</image>
-			
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" object_height="650" object_width="1410" object_scale="2.5" capture="false" zorder="0" />
+	</scene>
+	
+	<scene name="scene_model" title="model" onstart="" thumburl="panos/object-model/thumb.jpg">
+		<preview url="panos/object-model/preview.jpg" />
+		<image >
+			<cube url="panos/object-model/bg.jpg" />
+		</image>
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" model="panos/model/horse.js" />
-
 	</scene>
 	
 	

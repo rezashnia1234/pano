@@ -472,7 +472,7 @@ function krpanoplugin()
 		*/
 		// create a textured 3d box
 		box = new THREE.Mesh(new THREE.BoxGeometry(500,500,500), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path("panos/model/box.jpg"))}));
-		assign_object_properties(box, "box", {ath:160, atv:-3, depth:2000,scale:1.5, ondown:function(obj){ }, onup:function(obj){ }});
+		assign_object_properties(box, "box", {ath:160, atv:-3, depth:2000,scale:1.5, ondown:function(obj){scene.remove( box );krpano.call("vr_menu_loadhome();");}, onup:function(obj){ }});
 		scene.add( box );
 		krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
 
