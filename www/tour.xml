@@ -98,8 +98,8 @@
 
 		<!-- left panel -->
 		<hotspot name="p2" style="panel" ath="-55" atv="0" />
-			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="0" oy="-10" onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="0" oy="-10" onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="30" oy="30" onclick="changepano( loadscene('scene_model', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg" scale="0.25" ox="-30" oy="-30" onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
 			<hotspot name="p2_txt"    style="thumb" zorder="2" ath="-55" atv="0" url="texts.png" crop="4|360|840|88" scale="0.3" oy="82" enabled="false" />
 
 
@@ -244,7 +244,7 @@
 		</image>
 			
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" keep="true" folder="panos/car/" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" />
 
 	</scene>
 	
@@ -257,7 +257,7 @@
 		</image>
 			
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" keep="true" model="panos/model/horse.js" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" model="panos/model/horse.js" />
 
 	</scene>
 	
