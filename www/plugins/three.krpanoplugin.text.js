@@ -100,6 +100,7 @@ function krpanoplugin()
 	var krpano_depthbuffer_scale = 1.0001;				// depthbuffer scaling (use ThreeJS defaults: znear=0.1, zfar=2000)
 	var krpano_depthbuffer_offset = -0.2;
 	var active_image = "000";
+	var object_enabled;
 
 	function start()
 	{
@@ -482,26 +483,17 @@ function krpanoplugin()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**/
 		
-		
+
 		// preloader = new THREE.Mesh(new THREE.BoxGeometry(1330,570,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/360.png"))}));
 		// assign_object_properties(preloader, "preloader", {ath:90, atv:0,rz:180, depth:2000,scale:2, ondown:function(obj){ }, onup:function(obj){ }});
 		// scene.add( preloader );
 
-		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/000.jpg"))}));
-		for (i = 0; i < 36; i++) {
-			var i_temp = i*10;
-			if(i_temp == 0)
-				i_temp = "000";
-			else if(i_temp < 100)
-				i_temp = "0" + i_temp;
-			plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + "/" + i_temp + ".jpg") );
-			// plane.material.needsUpdate = true;
-			
-		}
-		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("vr_menu_loadhome();");}, onup:function(obj){ }});
-		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene('scene_01_sphere', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
-		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
-		scene.add( plane );
+		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder))}));
+		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("set(plugin[goldun_text].object_enabled,'false');)");}, onup:function(obj){ }});
+		object_enabled = plugin.object_enabled;
+		// alert(plugin.object_enabled)
+		if(plugin.object_enabled == "true")
+			scene.add( plane );
 		// scene.remove( plane );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -712,43 +704,33 @@ function krpanoplugin()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//movie object:
 			/**/
-			krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
-
-			// preloader.properties.rx =	camera.rotation.x*57.2958;
-			// preloader.properties.ry =	camera.rotation.y*57.2958;
-			// preloader.properties.rz =	camera.rotation.z*57.2958;
-			// preloader.properties.rorder = "XYZ"
-			// preloader.properties.ath = krpano_panoview.h;
-			// preloader.properties.atv = krpano_panoview.v;
-			// update_object_properties(preloader);
-			
-			plane.properties.rx =	180 + camera.rotation.x*57.2958;
-			plane.properties.ry =	180 - camera.rotation.y*57.2958;
-			plane.properties.rz =	0 + camera.rotation.z*57.2958;
-			plane.properties.rorder = "XYZ"
-			plane.properties.ath = krpano_panoview.h;
-			plane.properties.atv = krpano_panoview.v;
-			update_object_properties(plane);
-			
-			var src = krpano_panoview.h;
-			src = Math.floor(src/4);
-			src = src % 36;
-			if(src<0)
-				src = 36 + src;
-			src = src * 10;
-
-
-			if(src == 0)
-				src = "000";
-			else if(src < 100)
-				src = "0" + src;
-			if(src != active_image)
+			//object_enabled = plugin.object_enabled;
+			if(object_enabled != plugin.object_enabled)
 			{
-				active_image = src;
-				// krpano.trace(3,"floor:" +	src		);
-				plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + "/" + src + ".jpg") );
-				plane.material.needsUpdate = true;
+				if(plugin.object_enabled == "true")
+				{
+					scene.add( plane );
+				}
+				else if(plugin.object_enabled == "false")
+				{
+					scene.remove( plane );
+				}
+				object_enabled = plugin.object_enabled;
 			}
+			// alert(object_enabled);
+			if(object_enabled == "true")
+			{
+				krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
+				plane.properties.rx =	180 + camera.rotation.x*57.2958;
+				plane.properties.ry =	180 - camera.rotation.y*57.2958;
+				plane.properties.rz =	0 + camera.rotation.z*57.2958;
+				plane.properties.rorder = "XYZ"
+				plane.properties.ath = krpano_panoview.h;
+				plane.properties.atv = krpano_panoview.v;
+				update_object_properties(plane);
+			}
+
+			
 			
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

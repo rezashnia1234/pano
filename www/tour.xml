@@ -3,7 +3,7 @@
 	<action name="startup">
 		loadscene("home", null, MERGE);
 		smgroup_startup();
-		start_vr();
+		//start_vr();
 	</action>
 	
 	<action name="smgroup_startup" type="Javascript" autorun="">
@@ -43,7 +43,11 @@
 
 	
 	
-	<scene name="home" title="home" >
+	<scene name="home" title="home" onstart="action(startscene);">
+		<action name="startscene">
+			set(plugin[WebVR].pervious_pano,'home');
+		</action>
+		
 		<!-- the intro pano -->
 		<view fovtype="VFOV" fov="90" fovmin="40" fovmax="150" />
 		<preview url="panos/intro/preview.jpg" />
@@ -122,22 +126,11 @@
 		- additionally there the new setting 'use_as_videopano' that prepares
 		  the video for a later (=in an other scene) usage as video pano
 	-->
-	<plugin name="video" keep="true"
-	        url.flash="%SWFPATH%/plugins/videoplayer.swf"
-	        url.html5="%SWFPATH%/plugins/videoplayer.js"
-	        videourl.no-ios="video/video-1920x960.mp4|video/video-1920x960.webm"
-	        videourl.ios="video/video-1024x512.mp4"
-	        loop="true"
-	        pausedonstart="true"
-	        visible="false"
-	        use_as_videopano="true"
-	        />
 
 	<events name="video_events" devices="mobile.or.tablet" keep="true"
-	        onmousedown="video_auto_start();"
-	        onremovepano="if(xml.scene != video_scene, plugin[video].seek(0); plugin[video].pause(); );"
-	        />
-
+			onmousedown="video_auto_start();"
+			onremovepano="if(xml.scene != video_scene, plugin[video].seek(0); plugin[video].pause(); );"
+			/>
 	<action name="video_auto_start">
 		if(video_auto_start !== true,
 			if(plugin[video].ispaused,
@@ -148,7 +141,16 @@
 			  );
 		  );
 	</action>
-
+	<plugin name="video" keep="true"
+			url.flash="%SWFPATH%/plugins/videoplayer.swf"
+			url.html5="%SWFPATH%/plugins/videoplayer.js"
+			videourl.no-ios="video/video-1920x960.mp4|video/video-1920x960.webm"
+			videourl.ios="video/video-1024x512.mp4"
+			loop="true"
+			pausedonstart="true"
+			visible="false"
+			use_as_videopano="true"
+			/>
 	<scene name="video_scene" onstart="plugin[video].play();">
 		<image>
 			<sphere url="plugin:video" />
@@ -173,6 +175,7 @@
 	
 	
 	<style name="arrowspot" url="panos/muze/graphics/pfeil1.png" distorted="true" vr_timeout="1000" oy="0" scale="2" />
+	<style name="transparent_hotspot" url="images/blank--0.png"  alpha="0.0"  depth="1000"  polyline="false"  scaleflying="true"  tx="0"  ty="0"  tz="0"  distorted="true"  />
 	
 	<action name="goto">
 		mul(newdepth, depth, 2);
@@ -190,6 +193,20 @@
 		<hotspot name="scene_03_sphere"	style="arrowspot" ath="89.013"		atv="13.807"	rotate="0"  depth="10000" onclick="goto(scene_03_sphere);" />
 		<hotspot name="scene_02_sphere"	style="arrowspot" ath="-136.925"	atv="18.467"	rotate="0"   depth="5000"  onclick="goto(scene_02_sphere);" />
 		
+		<!-- tooltip hotspot ////////////////////////////////////////////////////////////////////////////////////-->
+		<hotspot name="hs1" style="transparent_hotspot"
+				 ath="39.343" atv="-7.027" width="83" height="70" scale="1" 
+				 onclick="set(plugin[goldun_text].object_enabled,'true');"
+		/>
+		<hotspot name="hs2" style="transparent_hotspot"
+				 ath="39.000" atv="2.353" width="83" height="70" scale="1" 
+				 onclick2="set(plugin[goldun_text].object_enabled,'true');"
+				 onclick="set(plugin[WebVR].pervious_pano,'scene_01_sphere');changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );"
+		/>
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" />
+
+
 	</scene>
 
 
@@ -252,6 +269,15 @@
 		</image>
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" model="panos/model/horse.js" />
+	</scene>
+	
+	<scene name="scene_model2" title="model" onstart="" thumburl="panos/object-model/thumb.jpg">
+		<preview url="panos/object-model/preview.jpg" />
+		<image >
+			<cube url="panos/object-model/bg.jpg" />
+		</image>
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="threejs" url="plugins/three.krpanoplugin.model2.js" model="panos/model/horse.js" />
 	</scene>
 	
 	
@@ -456,7 +482,8 @@
 	</action>
 
 	<!-- TEMP PRE-RELEASE STUFF -->
-	<display hotspotrenderer="webgl" devices="html5" />	<!-- force using WebGL for the hotspots -->
+	<!--<display hotspotrenderer="webgl" devices="html5" />-->	<!-- force using WebGL for the hotspots -->
+	<display hotspotrenderer="auto" devices="html5" />	<!-- force using WebGL for the hotspots -->
 	<view continuousupdates="true" devices="html5" />	<!-- constantly update the screen (required for WebGL hotspots for the moment) -->
 	<!-- TEMP PRE-RELEASE STUFF -->
 
