@@ -1,7 +1,7 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		loadscene("scene_01_sphere", null, MERGE);
+		loadscene("home", null, MERGE);
 		smgroup_startup();
 		//start_vr();
 	</action>
@@ -174,8 +174,9 @@
 	
 	
 	
-	<style name="arrowspot" url="panos/muze/graphics/pfeil1.png" distorted="true" vr_timeout="1000" oy="0" scale="2" />
+	<style name="arrowspot"  url="panos/muze/graphics/pfeil1.png" distorted="true" vr_timeout="1000" oy="0" scale="2" />
 	<style name="transparent_hotspot" url="images/blank--0.png"  alpha="0.0"  depth="1000"  polyline="false"  scaleflying="true"  tx="0"  ty="0"  tz="0"  distorted="true"  />
+	<style name="info_hotspot"  keep="false"  devices="all"  zoom="true" distorted="true" details="8" flying="0"  scale9grid="" scalechildren="false" rotate="0"  rx="0" ry="0" rz="0"  edge="center" ox="" oy=""  crop="" ondowncrop="" onovercrop=""  visible="true" enabled="false" usecontentsize="false" handcursor="true" capture="false" children="true" maskchildren="false"  zorder="0"  alpha="1.00" autoalpha="false" blendmode="normal" effect="" smoothing="true" pixelhittest="false"  refreshrate="auto"  bgalpha="0"  bgcapture="false"  bgcolor="0"  type="image"  />
 	
 	<action name="goto">
 		mul(newdepth, depth, 2);
@@ -190,13 +191,14 @@
 			<cube url="panos/muze/01_sphere.tiles/mobile_%s.jpg" />
 		</image>
 
-		<hotspot name="scene_03_sphere"	style="arrowspot" ath="89.013"		atv="13.807"	rotate="0"  depth="10000" onclick="goto(scene_03_sphere);" />
+		<hotspot name="scene_03_sphere"	style="arrowspot" ath="89.013"		atv="13.807"	rotate="0"   depth="10000" onclick="goto(scene_03_sphere);" />
 		<hotspot name="scene_02_sphere"	style="arrowspot" ath="-136.925"	atv="18.467"	rotate="0"   depth="5000"  onclick="goto(scene_02_sphere);" />
 		
 		<!-- tooltip hotspot ////////////////////////////////////////////////////////////////////////////////////-->
 		<hotspot name="hs1" style="transparent_hotspot"
 				 ath="39.343" atv="-7.027" width="83" height="70" scale="1" 
 				 onclick="set(plugin[goldun_text].object_enabled,'true');"
+				 onclick2="set(hotspot[hs1].scale, '0');set(plugin[goldun_text].object_enabled,'true');"
 		/>
 		<hotspot name="hs2" style="transparent_hotspot"
 				 ath="39.000" atv="2.353" width="83" height="70" scale="1" 
@@ -206,45 +208,19 @@
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
 		<!-- icon hotspot ////////////////////////////////////////////////////////////////////////////////////-->
-		<hotspot name="object1" devices="all"
-		         url="panos/muze/graphics/360.png"
-		         keep="false"
-		         ath="35.730546" atv="4.489667"
-		         zoom="true" distorted="true" details="8" flying="0"
-		         width="256" height="256"
-		         scale="0.12" scale9grid="" scalechildren="false" rotate="0"
-		         rx="0" ry="0" rz="0"
-		         edge="center" ox="" oy=""
-		         crop="" ondowncrop="" onovercrop=""
-		         visible="true" enabled="false" usecontentsize="false" handcursor="true" capture="false" children="true" maskchildren="false"
-	 	         zorder="0"
-		         alpha="1.00" autoalpha="false" blendmode="normal" effect="" smoothing="true" pixelhittest="false"
-		         refreshrate="auto"
-		         bgalpha="0"
-		         bgcapture="false"
-		         bgcolor="0"
-		         type="image"
-			>
+		<hotspot name="object1" style="info_hotspot"
+				url="panos/muze/graphics/360.png"
+				ath="35.730546" atv="4.489667"
+				width="256" height="256"
+				scale="0.12"
+		>
 		</hotspot>
-		<hotspot name="info1" devices="all"
-		         url="panos/muze/graphics/information.png"
-		         keep="false"
-		         ath="35.928512" atv="-4.517644"
-		         zoom="true" distorted="true" details="8" flying="0"
-		         width="256" height="256"
-		         scale="0.12" scale9grid="" scalechildren="false" rotate="0"
-		         rx="0" ry="0" rz="0"
-		         edge="center" ox="" oy=""
-		         crop="" ondowncrop="" onovercrop=""
-		         visible="true" enabled="false" usecontentsize="false" handcursor="false" capture="false" children="true" maskchildren="false"
-	 	         zorder="0"
-		         alpha="1.00" autoalpha="false" blendmode="normal" effect="" smoothing="true" pixelhittest="false"
-		         refreshrate="auto"
-		         bgalpha="0"
-		         bgcapture="false"
-		         bgcolor="0"
-		         type="image"
-			>
+		<hotspot name="info1"  style="info_hotspot"
+				url="panos/muze/graphics/information.png"
+				ath="35.928512" atv="-4.517644"
+				width="256" height="256"
+				scale="0.12"
+		>
 		</hotspot>
 	</scene>
 
