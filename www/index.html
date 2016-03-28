@@ -23,23 +23,29 @@
 		function onDeviceReady() {
 			//window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
-			window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");	
+alert("1");
+			window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+alert("2");
 			function setBrightness(value) {
 				// value should be float in range from 0 to 1.
 				brightness.setBrightness(value, Brightness_win, Brightness_fail);
 			}
+alert("3");
 			function getBrightness() {
 				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
-				brightness.getBrightness( win, fail);
+				brightness.getBrightness( Brightness_win, Brightness_fail);
 			}
 			function Brightness_win(status) {
-				//alert('Message: ' + status);
+				alert('Message: ' + status);
 			}
 			function Brightness_fail(status) {
-				//alert('Error: ' + status);
+				alert('Error: ' + status);
 			}
+alert("4");
 			brightness.setKeepScreenOn(true);
+alert("5");
 			setBrightness(1);
+alert("6");
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
