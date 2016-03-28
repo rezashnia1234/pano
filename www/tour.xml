@@ -1,9 +1,10 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		loadscene("home", null, MERGE);
+		//loadscene("home", null, MERGE);
+		loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
-		//start_vr();
+		start_vr();
 	</action>
 	
 	<action name="smgroup_startup" type="Javascript" autorun="">
@@ -40,6 +41,7 @@
 	<!-- allow scene switching by the PageUp/PageDown keys -->
 	<events name="keybcontrol" keep="true" onkeyup="if(keycode == 33, nextscene_loop(-1)); if(keycode == 34, nextscene_loop(+1));" />
 
+	<include url="%SWFPATH%/flyout.xml" />
 
 	
 	
@@ -103,11 +105,16 @@
 
 		<!-- right panel -->
 		<hotspot name="p3" style="panel" ath="+55" atv="0" />
-			<hotspot name="p3_thumb1" style="thumb" zorder="3" ath="+55" atv="0" url="video/thumb.jpg" scale="0.5" ox="0" oy="-10" onclick="changepano( loadscene(video_scene, null, MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); );" />
+			<hotspot name="p3_thumb1" style="thumb" zorder="3" ath="+55" atv="0" url="panos/video/thumb.jpg" scale="0.5" ox="0" oy="-10" onclick="changepano( loadscene(video_scene, null, MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); );" />
 			<hotspot name="p3_txt"    style="thumb" zorder="2" ath="+55" atv="0" url="texts.png" crop="4|277|840|88" scale="0.3" oy="82" enabled="false" />
 
 
 
+			
+			
+			
+			
+			
 
 
 	</scene>
@@ -144,8 +151,8 @@
 	<plugin name="video" keep="true"
 			url.flash="%SWFPATH%/plugins/videoplayer.swf"
 			url.html5="%SWFPATH%/plugins/videoplayer.js"
-			videourl.no-ios="pano/video/video-1920x960.mp4|video/video-1920x960.webm"
-			videourl.ios="pano/video/video-1024x512.mp4"
+			videourl.no-ios="panos/video/video-1920x960.mp4|panos/video/video-1920x960.webm"
+			videourl.ios="panos/video/video-1024x512.mp4"
 			loop="true"
 			pausedonstart="true"
 			visible="false"
@@ -205,8 +212,17 @@
 				 onclick2="set(plugin[goldun_text].object_enabled,'true');"
 				 onclick="set(plugin[WebVR].pervious_pano,'scene_01_sphere');changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );"
 		/>
+		<hotspot name="hs3" style="transparent_hotspot"
+				 ath="-5.340721" atv="1.81521" width="83" height="70" scale="1" 
+				 onclick="if(hotspot[spot1].flystate == 0, flyout_by_name(spot1), flyback_by_name(spot1) );"
+		/>
+		<hotspot name="hs4" style="transparent_hotspot"
+				 ath="-4.751327" atv="-7.398506" width="83" height="70" scale="1" 
+				 onclick="if(hotspot[spot1].flystate == 0, flyout_by_name(spot1), flyback_by_name(spot1) );"
+		/>
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
+		<plugin name="goldun_video" url="plugins/three.krpanoplugin.video.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
 		<!-- icon hotspot ////////////////////////////////////////////////////////////////////////////////////-->
 		<hotspot name="object1" style="info_hotspot"
 				url="panos/muze/graphics/360.png"
@@ -222,6 +238,44 @@
 				scale="0.12"
 		>
 		</hotspot>
+		<hotspot name="photo1"  style="info_hotspot"
+				url="panos/muze/graphics/image.png"
+				ath="-2.245741" atv="3.849678"
+				width="256" height="256"
+				scale="0.12"
+		>
+		</hotspot>
+		<hotspot name="photo2"  style="info_hotspot"
+				url="panos/muze/graphics/image.png"
+				ath="-2.488107" atv="-4.649823"
+				width="256" height="256"
+				scale="0.12"
+		>
+		</hotspot>
+		
+		
+		
+		
+		
+		<!-- flying hotspot ////////////////////////////////////////////////////////////////////////////////////-->
+		<hotspot name="spot1" style="flyoutimage"
+				 url="panos/muze/images/image1.jpg"
+				 zorder="1"
+				 ath="45"
+				 atv="54"
+				 scale="0.5"
+				 rx="-22.5" ry="-26.25" rz="-50.1"
+				 />
+		<hotspot name="spot2" style="flyoutimage"
+				 url="panos/muze/images/image2.jpg"
+				 zorder="1"
+				 ath="45"
+				 atv="54"
+				 scale="0.5"
+				 rx="-22.5" ry="-26.25" rz="-50.1"
+				 />
+
+
 	</scene>
 
 

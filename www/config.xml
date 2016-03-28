@@ -63,8 +63,7 @@
 
     <!-- Third party plugins -->
 	<!--Prevent the screen of the mobile device from falling asleep:-->
-	<!--<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />-->
-	<plugin name="cordova.plugin.c22.brightness" spec="0.1.0" source="pgb" />
+	<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />
 	
 	
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
