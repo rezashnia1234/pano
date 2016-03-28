@@ -62,13 +62,10 @@
 	
 
     <!-- Third party plugins -->
-    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
-    <!-- 
-        <gap:plugin name="com.phonegap.plugins.barcodescanner" />
-		<gap:plugin name="com.kumbe.phonegap.zoom.zoomcontrol" version="0.1.5" />
-    -->	
 	<!--Prevent the screen of the mobile device from falling asleep:-->
-	<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />
+	<!--<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />-->
+	<plugin name="cordova.plugin.c22.brightness" spec="0.1.0" source="pgb" />
+	
 	
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
@@ -98,7 +95,7 @@
     <icon src="images/splash/ios.png" platform="ios" />
 	
     <!-- Define app splash screen for each platform. -->
-	<gap:splash src="images/splash/screen-hdpi-landscape.png" />
+	<!--<gap:splash src="images/splash/screen-hdpi-landscape.png" />-->
 	<!--
 	<gap:splash src="img/splash/splash_bkg.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 	<gap:splash src="img/splash/splash_bkg_landscape.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
@@ -111,14 +108,12 @@
     <gap:splash src="images/splash/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="port-hdpi" />
     <gap:splash src="images/splash/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xhdpi" />
     <gap:splash src="images/splash/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xxhdpi" />
-	
+
     <gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		width="320"		height="480" />
     <gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		width="640"		height="960" />
     <gap:splash src="images/splash/screen-iphone-landscape-568h-2x.png"	gap:platform="ios"		width="640"		height="1136" />
-    <gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		width="768"		height="1024" />
-    <gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		width="1536"	height="2048" />
-
-
+    <gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		height="768"	width="1024" />
+    <gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		height="1536"	width="2048" />
 
 	
 	<access origin="*"/> <!-- allow local pages -->
