@@ -1,7 +1,7 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		loadscene("home", null, MERGE);
+		loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
 		//start_vr();
 	</action>
@@ -204,9 +204,48 @@
 				 onclick="set(plugin[WebVR].pervious_pano,'scene_01_sphere');changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );"
 		/>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" />
-
-
+		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
+		<!-- icon hotspot ////////////////////////////////////////////////////////////////////////////////////-->
+		<hotspot name="object1" devices="all"
+		         url="panos/muze/graphics/360.png"
+		         keep="false"
+		         ath="35.730546" atv="4.489667"
+		         zoom="true" distorted="true" details="8" flying="0"
+		         width="256" height="256"
+		         scale="0.12" scale9grid="" scalechildren="false" rotate="0"
+		         rx="0" ry="0" rz="0"
+		         edge="center" ox="" oy=""
+		         crop="" ondowncrop="" onovercrop=""
+		         visible="true" enabled="false" usecontentsize="false" handcursor="true" capture="false" children="true" maskchildren="false"
+	 	         zorder="0"
+		         alpha="1.00" autoalpha="false" blendmode="normal" effect="" smoothing="true" pixelhittest="false"
+		         refreshrate="auto"
+		         bgalpha="0"
+		         bgcapture="false"
+		         bgcolor="0"
+		         type="image"
+			>
+		</hotspot>
+		<hotspot name="info1" devices="all"
+		         url="panos/muze/graphics/information.png"
+		         keep="false"
+		         ath="35.928512" atv="-4.517644"
+		         zoom="true" distorted="true" details="8" flying="0"
+		         width="256" height="256"
+		         scale="0.12" scale9grid="" scalechildren="false" rotate="0"
+		         rx="0" ry="0" rz="0"
+		         edge="center" ox="" oy=""
+		         crop="" ondowncrop="" onovercrop=""
+		         visible="true" enabled="false" usecontentsize="false" handcursor="false" capture="false" children="true" maskchildren="false"
+	 	         zorder="0"
+		         alpha="1.00" autoalpha="false" blendmode="normal" effect="" smoothing="true" pixelhittest="false"
+		         refreshrate="auto"
+		         bgalpha="0"
+		         bgcapture="false"
+		         bgcolor="0"
+		         type="image"
+			>
+		</hotspot>
 	</scene>
 
 
@@ -250,7 +289,7 @@
 			<cube url="panos/object/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" capture="false" zorder="0" />		
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" capture="false" zorder="0" devices="html5" />		
 	</scene>
 	
 	<scene name="scene_object_car" title="object" onstart="" thumburl="panos/object-car/thumb.jpg">
@@ -259,7 +298,7 @@
 			<cube url="panos/object-car/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" object_height="650" object_width="1410" object_scale="2.5" capture="false" zorder="0" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" object_height="650" object_width="1410" object_scale="2.5" capture="false" zorder="0" devices="html5" />
 	</scene>
 	
 	<scene name="scene_model" title="model" onstart="" thumburl="panos/object-model/thumb.jpg">
@@ -268,7 +307,7 @@
 			<cube url="panos/object-model/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" model="panos/model/horse.js" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.model.js" model="panos/model/horse.js" devices="html5" />
 	</scene>
 	
 	<scene name="scene_model2" title="model" onstart="" thumburl="panos/object-model/thumb.jpg">
@@ -277,7 +316,7 @@
 			<cube url="panos/object-model/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.model2.js" model="panos/model/horse.js" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.model2.js" model="panos/model/horse.js" devices="html5" />
 	</scene>
 	
 	
