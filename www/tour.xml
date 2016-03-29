@@ -1,8 +1,8 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		//loadscene("home", null, MERGE);
-		loadscene("scene_object_web", null, MERGE);
+		loadscene("home", null, MERGE);
+		//loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
 		start_vr();
 	</action>
@@ -111,7 +111,7 @@
 			<hotspot name="p2_thumb3" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-car/thumb.jpg"		 scale="0.3" 	ox="90"		oy="-45"	onclick="changepano( loadscene('scene_object_car', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
 			<hotspot name="p2_thumb4" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-bmw-movie/thumb.jpg"	 scale="0.3" 	ox="-90"	oy="45"		onclick="changepano( loadscene('scene_object_bmw_movie', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
 			<hotspot name="p2_thumb5" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-video/thumb.jpg"		 scale="0.3" 	ox="-0"		oy="45"		onclick="changepano( loadscene('scene_object_video', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb6" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-web/thumb.jpg"		 scale="0.3" 	ox="90"		oy="45"		onclick="changepano( loadscene('scene_object_web', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<!--<hotspot name="p2_thumb6" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-web/thumb.jpg"		 scale="0.3" 	ox="90"		oy="45"		onclick="changepano( loadscene('scene_object_web', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />-->
 			<!--<hotspot name="p2_txt"    style="thumb" zorder="2" ath="-55" atv="0" url="texts.png" crop="4|360|840|88" scale="0.3" 	oy="82"		 enabled="false" />-->
 
 
@@ -356,15 +356,6 @@
 		</image>
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="threejs" url="plugins/three.krpanoplugin.video.js" folder="panos/video/sintel" object_height="204" object_width="480" object_scale="8" capture="false" zorder="0" devices="html5" />		
-	</scene>
-	
-	<scene name="scene_object_web" title="object" thumburl="panos/object-video/thumb.jpg" onstart="action(startscene);">
-		<preview url="panos/object-video/preview.jpg" />
-		<image >
-			<cube url="panos/object-video/bg.jpg" />
-		</image>
-		<!-- add the custom ThreeJS plugin -->
-		<plugin name="goldun_video" url="plugins/three.krpanoplugin.web.js" folder="panos/html/index.html" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
 	</scene>
 	
 	<scene name="scene_model" title="model" thumburl="panos/object-model/thumb.jpg" onstart="action(startscene);">
