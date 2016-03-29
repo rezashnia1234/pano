@@ -14,23 +14,23 @@
 		iframe {border: 0px solid transparent !important;width: 100%;}
 	</style>
 	<script src="js/jquery-1.11.3.min.js"></script>
-    <script src="phonegap.js"></script>
 	<script>
 		function init() {		
-			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
+			//console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
+			alert("1");
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 		}
 		function onDeviceReady() {
 			//window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
-			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
-		
+			//console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
+			alert("2");
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
-				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start setTimeout()');
-				
+				//console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start setTimeout()');
+				alert("3");
 			}, 5000);
 		});
 
@@ -48,5 +48,6 @@
 	<!--embedpano({swf:"tour.swf?0", xml:"tour.xml?0", target:"pano", html5:"only", passQueryParameters:true});-->
 </div>
 <div id="placeholder" style0="display:none"></div>
+<script src="phonegap.js"></script>
 </body>
 </html>
