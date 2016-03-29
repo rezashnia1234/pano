@@ -26,11 +26,12 @@
 			//window.plugins.insomnia.allowSleepAgain();
 			
 			setTimeout(function(){
-				alert("1");
 				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
-				alert("2");
-				setBrightness(0.1);
-				alert("3");
+				setBrightness(1);
+		        // prevents sleep
+				brightness.setKeepScreenOn(true);
+				// returns normal behavior
+				//pluginService.brightness.setKeepScreenOn(false);
 			}, 1000);			
 			function setBrightness(value) {
 				// value should be float in range from 0 to 1.
@@ -41,10 +42,10 @@
 				brightness.getBrightness( win, fail);
 			}
 			function win(status) {
-				alert('Message: ' + status);
+				//alert('Message: ' + status);
 			}
 			function fail(status) {
-				alert('Error: ' + status);
+				//alert('Error: ' + status);
 			}
 		}
 		$(document).ready(function() {
