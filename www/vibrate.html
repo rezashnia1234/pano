@@ -11,10 +11,10 @@
 		@media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
 		html { height:100%; }
 		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
-		iframe {border: 0px solid transparent !important;width: 100%;}
+        .rotate{font-size: 80px;color : red;}
 	</style>
 	<script src="js/jquery-1.11.3.min.js"></script>
-    <!--<script src="phonegap.js"></script>-->
+    <script src="phonegap.js"></script>
 	<script>
 		function init() {		
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
@@ -24,7 +24,29 @@
 		function onDeviceReady() {
 			//window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
-		
+			navigator.vibrate(500);
+			setTimeout(function(){
+				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+				setBrightness(1);
+		        // prevents sleep
+				brightness.setKeepScreenOn(true);
+				// returns normal behavior
+				//pluginService.brightness.setKeepScreenOn(false);
+			}, 1000);			
+			function setBrightness(value) {
+				// value should be float in range from 0 to 1.
+				brightness.setBrightness(value, win, fail);
+			}
+			function getBrightness() {
+				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
+				brightness.getBrightness( win, fail);
+			}
+			function win(status) {
+				//alert('Message: ' + status);
+			}
+			function fail(status) {
+				//alert('Error: ' + status);
+			}
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
@@ -32,23 +54,13 @@
 				
 			}, 1000);
 		});
+		
 
 	</script>
 </head>
-<body onload="init();" style="background-color:#ffffff;">
-<script src="tour.js?0"></script>
-<!--<div id="gyro" style="">00000000000000000</div>-->
-
-<div id="pano" style="width:100%;height:100%;">
-	<noscript><table style="width:100%;height:100%;"><tr style="valign:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
-	<script>
-		embedpano({swf:"tour.swf?0", xml:"tour.xml?0", target:"pano", html5:"only", passQueryParameters:true});
-	</script>
-	<!--embedpano({swf:"tour.swf?0", xml:"tour.xml?0", target:"pano", html5:"only", passQueryParameters:true});-->
-</div>
-<div id="placeholder" style0="display:none"></div>
-<div id="placeholder2" style="width:0px;height:0px;overflow:hidden;">
-	<iframe src='vibrate.html' id='iframe' style='' width='10px' height='10px' ></iframe>
-</div>
+<body onload="init();">
+	<a href="index.html" style='text-align: center; font-family: tahoma; font-size: 15px; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; vertical-align: middle; width: 100%; color: white; text-decoration: none; display: block; height: 48px;'>
+		ورود به تور مجازی
+	</a>
 </body>
 </html>
