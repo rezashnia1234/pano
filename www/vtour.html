@@ -14,7 +14,7 @@
 		iframe {border: 0px solid transparent !important;width: 100%;}
 	</style>
 	<script src="js/jquery-1.11.3.min.js"></script>
-    <!--<script src="phonegap.js"></script>-->
+    <script src="phonegap.js"></script>
 	<script>
 		function init() {		
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
@@ -24,13 +24,14 @@
 		function onDeviceReady() {
 			//window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
+			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
 		
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
-
+				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start setTimeout()');
 				
-			}, 1000);
+			}, 5000);
 		});
 
 	</script>

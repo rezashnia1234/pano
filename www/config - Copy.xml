@@ -41,36 +41,36 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-	<!--<gap:plugin name="cordova-plugin-whitelist" source="npm" />-->
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <!--<gap:plugin name="org.apache.cordova.battery-status" source="npm" />-->
     <!--<gap:plugin name="org.apache.cordova.media-capture" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.console" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.device" source="npm" />-->
+    <gap:plugin name="org.apache.cordova.console" source="npm" />
+    <gap:plugin name="org.apache.cordova.device" source="npm" />
     <!--<gap:plugin name="org.apache.cordova.device-motion" source="npm" />-->
     <!--<gap:plugin name="org.apache.cordova.device-orientation" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.dialogs" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.file" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.file-transfer" source="npm" />-->
+    <gap:plugin name="org.apache.cordova.dialogs" source="npm" />
+    <gap:plugin name="org.apache.cordova.file" source="npm" />
+    <gap:plugin name="org.apache.cordova.file-transfer" source="npm" />
     <!--<gap:plugin name="org.apache.cordova.geolocation" source="npm" />-->
     <!--<gap:plugin name="org.apache.cordova.globalization" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />-->
-	<!--<gap:plugin name="org.apache.cordova.media" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.network-information" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.splashscreen" source="npm" />-->
-    <!--<gap:plugin name="org.apache.cordova.vibration" source="npm" />-->
+    <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />
+	<gap:plugin name="org.apache.cordova.media" source="npm" />
+    <gap:plugin name="org.apache.cordova.network-information" source="npm" />
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
+    <gap:plugin name="org.apache.cordova.vibration" source="npm" />
 	
 	
 
     <!-- Third party plugins -->
 	<!--Prevent the screen of the mobile device from falling asleep:-->
 	<!--<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />-->
-	<!--<plugin spec="https://github.com/fiscal-cliff/phonegap-plugin-brightness.git" source="git" />-->
+	<plugin spec="https://github.com/fiscal-cliff/phonegap-plugin-brightness.git" source="git" />
 	
 	
-	<!--<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />-->
-    <!--<gap:plugin name="com.phonegap.plugins.pushplugin" />-->
-	<!--<gap:plugin name="hu.dpal.phonegap.plugins.uniquedeviceid" />-->
-	<!--<gap:plugin name="com.phonegap.plugin.statusbar" />-->
+	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
+	<gap:plugin name="hu.dpal.phonegap.plugins.uniquedeviceid" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" />
 	<gap:config-file platform="ios" parent="UIStatusBarHidden">
 		<true/>
 	</gap:config-file>
@@ -86,9 +86,9 @@
 	
 	<!--<gap:plugin name="com.dawsonloudon.videoplayer" 	platform="android"	version="1.0.0" />-->
 	<!--<gap:plugin name="com.hutchind.cordova.plugins.streamingmedia"  />-->
-	<!--<plugin name="com.hutchind.cordova.plugins.streamingmedia"  source="pgb" />-->
+	<plugin name="com.hutchind.cordova.plugins.streamingmedia"  source="pgb" />
 	<!--<plugin name="com.synconset.imagepicker" source="pgb" />-->
-	<!--<plugin name="net.roughshod.plugins.barcodescanner" spec="3.0.0" source="pgb" />-->
+	<plugin name="net.roughshod.plugins.barcodescanner" spec="3.0.0" source="pgb" />
 	
     <!-- Define app icon      -->
     <icon src="images/splash/icon.png" />
