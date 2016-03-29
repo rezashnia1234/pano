@@ -44,6 +44,7 @@ function krpanoplugin()
 	local.unloadplugin = function()
 	{
 		// no unloading support at the moment
+		scene.remove( plane );
 	}
 
 	local.onresize = function(width, height)
@@ -489,13 +490,14 @@ function krpanoplugin()
 		// scene.add( preloader );
 
 		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder))}));
-		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("set(plugin[goldun_text].object_enabled,'false');)");}, onup:function(obj){ }});
+		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("set(plugin[" + plugin.name + "].object_enabled,'false');)");}, onup:function(obj){ }});
+		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){krpano.call("set(plugin[" + plugin.name + "].object_enabled,'false');)");}, onup:function(obj){ }});
 		object_enabled = plugin.object_enabled;
 		// alert(plugin.object_enabled)
 		if(plugin.object_enabled == "true")
 			scene.add( plane );
 		// scene.remove( plane );
-
+console.log("plane_01");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -707,6 +709,7 @@ function krpanoplugin()
 			//object_enabled = plugin.object_enabled;
 			if(object_enabled != plugin.object_enabled)
 			{
+console.log("plane_02");
 				if(plugin.object_enabled == "true")
 				{
 					scene.add( plane );

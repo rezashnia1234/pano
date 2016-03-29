@@ -44,6 +44,7 @@ function krpanoplugin()
 	local.unloadplugin = function()
 	{
 		// no unloading support at the moment
+		scene.remove( plane_video );
 	}
 
 	local.onresize = function(width, height)
@@ -488,14 +489,14 @@ function krpanoplugin()
 		// assign_object_properties(preloader, "preloader", {ath:90, atv:0,rz:180, depth:2000,scale:2, ondown:function(obj){ }, onup:function(obj){ }});
 		// scene.add( preloader );
 
-		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder))}));
-		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("set(plugin[goldun_text].object_enabled,'false');)");}, onup:function(obj){ }});
+		plane_video = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder))}));
+		assign_object_properties(plane_video, "plane_video", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){krpano.call("set(plugin[" + plugin.name + "].object_enabled,'false');)");}, onup:function(obj){ }});
 		object_enabled = plugin.object_enabled;
 		// alert(plugin.object_enabled)
 		if(plugin.object_enabled == "true")
-			scene.add( plane );
-		// scene.remove( plane );
-
+			scene.add( plane_video );
+		// scene.remove( plane_video );
+console.log("video_01");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -707,13 +708,14 @@ function krpanoplugin()
 			//object_enabled = plugin.object_enabled;
 			if(object_enabled != plugin.object_enabled)
 			{
+console.log("video_02");
 				if(plugin.object_enabled == "true")
 				{
-					scene.add( plane );
+					scene.add( plane_video );
 				}
 				else if(plugin.object_enabled == "false")
 				{
-					scene.remove( plane );
+					scene.remove( plane_video );
 				}
 				object_enabled = plugin.object_enabled;
 			}
@@ -721,13 +723,13 @@ function krpanoplugin()
 			if(object_enabled == "true")
 			{
 				krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
-				plane.properties.rx =	180 + camera.rotation.x*57.2958;
-				plane.properties.ry =	180 - camera.rotation.y*57.2958;
-				plane.properties.rz =	0 + camera.rotation.z*57.2958;
-				plane.properties.rorder = "XYZ"
-				plane.properties.ath = krpano_panoview.h;
-				plane.properties.atv = krpano_panoview.v;
-				update_object_properties(plane);
+				plane_video.properties.rx =	180 + camera.rotation.x*57.2958;
+				plane_video.properties.ry =	180 - camera.rotation.y*57.2958;
+				plane_video.properties.rz =	0 + camera.rotation.z*57.2958;
+				plane_video.properties.rorder = "XYZ"
+				plane_video.properties.ath = krpano_panoview.h;
+				plane_video.properties.atv = krpano_panoview.v;
+				update_object_properties(plane_video);
 			}
 
 			

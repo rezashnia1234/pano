@@ -11,7 +11,7 @@ function krpanoplugin()
 	var krpano = null;
 	var device = null;
 	var plugin = null;
-
+	var object_count;
 
 	local.registerplugin = function(krpanointerface, pluginpath, pluginobject)
 	{
@@ -44,6 +44,8 @@ function krpanoplugin()
 	local.unloadplugin = function()
 	{
 		// no unloading support at the moment
+		// alert();
+		scene.remove( plane );
 	}
 
 	local.onresize = function(width, height)
@@ -486,9 +488,10 @@ function krpanoplugin()
 		// preloader = new THREE.Mesh(new THREE.BoxGeometry(1330,570,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/360.png"))}));
 		// assign_object_properties(preloader, "preloader", {ath:90, atv:0,rz:180, depth:2000,scale:2, ondown:function(obj){ }, onup:function(obj){ }});
 		// scene.add( preloader );
-
+		object_count = parseInt(plugin.object_count);
+		
 		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/000.jpg"))}));
-		for (i = 0; i < 36; i++) {
+		for (i = 0; i < object_count; i++) {
 			var i_temp = i*10;
 			if(i_temp == 0)
 				i_temp = "000";
@@ -500,7 +503,8 @@ function krpanoplugin()
 		}
 		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("vr_menu_loadhome();");}, onup:function(obj){ }});
 		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene('scene_01_sphere', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
-		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
+		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
+		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
 		scene.add( plane );
 		// scene.remove( plane );
 
@@ -732,9 +736,9 @@ function krpanoplugin()
 			
 			var src = krpano_panoview.h;
 			src = Math.floor(src/4);
-			src = src % 36;
+			src = src % object_count;
 			if(src<0)
-				src = 36 + src;
+				src = object_count + src;
 			src = src * 10;
 
 
