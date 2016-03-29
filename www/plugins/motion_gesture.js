@@ -35,6 +35,11 @@ var krpanoplugin = function()
 					if (((event.beta > 45 ) && (event.beta < 135)) || ((event.beta < -45 ) && (event.beta > -135)))
 					{
 						//document.getElementById("gyro").innerHTML = "done";
+						navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+						if (navigator.vibrate) {
+							navigator.vibrate(500);
+						}
+						
 						plugin.curent_pano=plugin.target_pano;
 						krpano.call("loadscene(" + plugin.target_pano+ ", 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");
 					}

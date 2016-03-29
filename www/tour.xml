@@ -1,8 +1,8 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		loadscene("home", null, MERGE);
-		//loadscene("scene_01_sphere", null, MERGE);
+		//loadscene("home", null, MERGE);
+		loadscene("scene_object_video", null, MERGE);
 		smgroup_startup();
 		start_vr();
 	</action>
@@ -106,10 +106,12 @@
 
 		<!-- left panel -->
 		<hotspot name="p2" style="panel" ath="-55" atv="0" />
-			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg"		 	 scale="0.3" 	ox="-90"	oy="-40"	onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-model/thumb.jpg"		 scale="0.3" 	ox="-0"		oy="-40"	onclick="changepano( loadscene('scene_model', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb3" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-car/thumb.jpg"		 scale="0.3" 	ox="90"		oy="-40"	onclick="changepano( loadscene('scene_object_car', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
-			<hotspot name="p2_thumb4" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-bmw-movie/thumb.jpg"	 scale="0.3" 	ox="-90"	oy="40"		onclick="changepano( loadscene('scene_object_bmw_movie', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb1" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object/thumb.jpg"		 	 scale="0.3" 	ox="-90"	oy="-45"	onclick="changepano( loadscene('scene_object', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb2" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-model/thumb.jpg"		 scale="0.3" 	ox="-0"		oy="-45"	onclick="changepano( loadscene('scene_model', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb3" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-car/thumb.jpg"		 scale="0.3" 	ox="90"		oy="-45"	onclick="changepano( loadscene('scene_object_car', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb4" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-bmw-movie/thumb.jpg"	 scale="0.3" 	ox="-90"	oy="45"		onclick="changepano( loadscene('scene_object_bmw_movie', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb5" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-video/thumb.jpg"		 scale="0.3" 	ox="-0"		oy="45"		onclick="changepano( loadscene('scene_object_video', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
+			<hotspot name="p2_thumb6" style="thumb" zorder="3" ath="-55" atv="0" url="panos/object-web/thumb.jpg"		 scale="0.3" 	ox="90"		oy="45"		onclick="changepano( loadscene('scene_object_web', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1)); set(webvr.worldscale,0.5); );" />
 			<!--<hotspot name="p2_txt"    style="thumb" zorder="2" ath="-55" atv="0" url="texts.png" crop="4|360|840|88" scale="0.3" 	oy="82"		 enabled="false" />-->
 
 
@@ -226,11 +228,10 @@
 		/>
 		<hotspot name="hs4" style="transparent_hotspot"
 				 ath="-4.751327" atv="-7.398506" width="83" height="70" scale="1" 
-				 onclick="set(plugin[goldun_video].object_enabled,'true');"
+				 onclick="set(plugin[goldun_text].object_enabled,'true');"
 		/>
 		<!-- add the custom ThreeJS plugin -->
-		<!--<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />-->
-		<plugin name="goldun_video" url="plugins/three.krpanoplugin.video.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
+		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
 		<!-- icon hotspot ////////////////////////////////////////////////////////////////////////////////////-->
 		<hotspot name="object1" style="info_hotspot"
 				url="panos/muze/graphics/360.png"
@@ -339,13 +340,32 @@
 		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/car/" object_height="650" object_width="1410" object_scale="2.5" object_count="36" capture="false" zorder="0" devices="html5" />
 	</scene>
 	
-	<scene name="scene_object_bmw_movie" title="object" thumburl="panos/object/thumb.jpg" onstart="action(startscene);">
+	<scene name="scene_object_bmw_movie" title="object" thumburl="panos/object-bmw-movie/thumb.jpg" onstart="action(startscene);">
 		<preview url="panos/object-bmw-movie/preview.jpg" />
 		<image >
 			<cube url="panos/object-bmw-movie/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
 		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/bmw-movie/" object_height="576" object_width="1024" object_scale="3" object_count="71" capture="false" zorder="0" devices="html5" />		
+	</scene>
+	
+	<scene name="scene_object_video" title="object" thumburl="panos/object-video/thumb.jpg" onstart="action(startscene);">
+		<preview url="panos/object-video/preview.jpg" />
+		<image >
+			<cube url="panos/object-video/bg.jpg" />
+		</image>
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="threejs" url="plugins/three.krpanoplugin.video.js" folder="panos/video/sintel" object_height="204" object_width="480" object_scale="8" capture="false" zorder="0" devices="html5" />		
+	</scene>
+	
+	<scene name="scene_object_web" title="object" thumburl="panos/object-video/thumb.jpg" onstart="action(startscene);">
+		<preview url="panos/object-video/preview.jpg" />
+		<image >
+			<cube url="panos/object-video/bg.jpg" />
+		</image>
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/bmw-movie/" object_height="576" object_width="1024" object_scale="3" object_count="71" capture="false" zorder="0" devices="html5" />		
+		<!--<plugin name="goldun_video" url="plugins/three.krpanoplugin.video.js" object_enabled="false" folder="panos/muze/graphics/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />-->
 	</scene>
 	
 	<scene name="scene_model" title="model" thumburl="panos/object-model/thumb.jpg" onstart="action(startscene);">
@@ -401,6 +421,8 @@
 			callwith(hotspot[p2_thumb2], copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint, set(enabled,true) ); );
 			callwith(hotspot[p2_thumb3], copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint, set(enabled,true) ); );
 			callwith(hotspot[p2_thumb4], copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint, set(enabled,true) ); );
+			callwith(hotspot[p2_thumb5], copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint, set(enabled,true) ); );
+			callwith(hotspot[p2_thumb6], copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint, set(enabled,true) ); );
 			callwith(hotspot[p2_txt],    copy(ty,start_ty); tween(alpha|ty, 1.0|75, get(start_tt), easeOutQuad|easeOutQuint); );
 
 			callwith(hotspot[p3],        copy(ty,start_ty); tween(alpha|ty, 0.5|75, get(start_tt), easeOutQuad|easeOutQuint); );

@@ -11,6 +11,7 @@ function krpanoplugin()
 	var krpano = null;
 	var device = null;
 	var plugin = null;
+	var is_there_any_thumb = true;
 
 
 	local.registerplugin = function(krpanointerface, pluginpath, pluginobject)
@@ -45,6 +46,9 @@ function krpanoplugin()
 	{
 		// no unloading support at the moment
 		scene.remove( plane_video );
+		if(is_there_any_thumb)
+			scene.remove( plane_video_thumb );
+		$("#placeholder").html('');
 	}
 
 	local.onresize = function(width, height)
@@ -100,7 +104,6 @@ function krpanoplugin()
 	var krpano_projection = new Float32Array(16);		// krpano projection matrix
 	var krpano_depthbuffer_scale = 1.0001;				// depthbuffer scaling (use ThreeJS defaults: znear=0.1, zfar=2000)
 	var krpano_depthbuffer_offset = -0.2;
-	var active_image = "000";
 	var object_enabled;
 
 	function start()
@@ -485,18 +488,32 @@ function krpanoplugin()
 /**/
 		
 
-		// preloader = new THREE.Mesh(new THREE.BoxGeometry(1330,570,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/360.png"))}));
-		// assign_object_properties(preloader, "preloader", {ath:90, atv:0,rz:180, depth:2000,scale:2, ondown:function(obj){ }, onup:function(obj){ }});
-		// scene.add( preloader );
+$("#placeholder").html('<!--<div style="position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;text:center;width:100%;color:red;height:50px;" onclick="document.getElementById(\'video\').play();">000000000000000000000000000</div>--><video id="video" webkit-playsinline style="display:none"><source src="' + plugin.folder + '.mp4" type=\'video/mp4; codecs="avc1.42E01E, mp4a.40.2"\'><source src="' + plugin.folder + '.ogv" type=\'video/ogg; codecs="theora, vorbis"\'></video>');
 
-		plane_video = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder))}));
-		assign_object_properties(plane_video, "plane_video", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){krpano.call("set(plugin[" + plugin.name + "].object_enabled,'false');)");}, onup:function(obj){ }});
-		object_enabled = plugin.object_enabled;
-		// alert(plugin.object_enabled)
-		if(plugin.object_enabled == "true")
-			scene.add( plane_video );
-		// scene.remove( plane_video );
+video = document.getElementById( 'video' );
+texture = new THREE.VideoTexture( video );
+texture.minFilter = THREE.LinearFilter;
+texture.magFilter = THREE.LinearFilter;
+texture.format = THREE.RGBFormat;
+
+// texture = THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + ".jpg"));
+
+plane_video = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:texture}));
+assign_object_properties(plane_video, "plane_video", {ath:90, atv:0,rz:180, depth:2000,scale:0.0001, ondown:function(obj){krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
+scene.add( plane_video );
 console.log("video_01");
+// renderer.autoClear = false;
+
+plane_video_thumb = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + ".jpg"))}));
+assign_object_properties(plane_video_thumb, "plane_video_thumb", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){
+																																					document.getElementById('video').play();
+																																					plane_video.properties.scale = plugin.object_scale;
+																																					update_object_properties(plane_video);
+																																					is_there_any_thumb=false;
+																																					scene.remove( plane_video_thumb );
+																																					}, onup:function(obj){ }});
+scene.add( plane_video_thumb );
+//scene.remove( plane_video_thumb )
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -677,52 +694,25 @@ console.log("video_01");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// if (box)
-		// {
-			//rotate by time:
-			/*
-			box.properties.rx += 50 * delta;
-			box.properties.ry += 10 * delta;
-			update_object_properties(box);
-			*/
-		// }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// if (box)
-		// {
-			//good for 3D model:
-			/*
-			krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
-			////////box.properties.ry += 0.01 * krpano_panoview.h;
-			box.properties.ath = krpano_panoview.h;
-			box.properties.atv = krpano_panoview.v;
-			update_object_properties(box);
-			*/
-		// }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//movie object:
 			/**/
-			//object_enabled = plugin.object_enabled;
-			if(object_enabled != plugin.object_enabled)
-			{
-console.log("video_02");
-				if(plugin.object_enabled == "true")
-				{
-					scene.add( plane_video );
-				}
-				else if(plugin.object_enabled == "false")
-				{
-					scene.remove( plane_video );
-				}
-				object_enabled = plugin.object_enabled;
-			}
+			// console.log("video_02");
+
 			// alert(object_enabled);
-			if(object_enabled == "true")
+			krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
+			// console.log("video_02");
+			if(is_there_any_thumb)
 			{
-				krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
+				plane_video_thumb.properties.rx =	180 + camera.rotation.x*57.2958;
+				plane_video_thumb.properties.ry =	180 - camera.rotation.y*57.2958;
+				plane_video_thumb.properties.rz =	0 + camera.rotation.z*57.2958;
+				plane_video_thumb.properties.rorder = "XYZ"
+				plane_video_thumb.properties.ath = krpano_panoview.h;
+				plane_video_thumb.properties.atv = krpano_panoview.v;
+				update_object_properties(plane_video_thumb);
+			}
+			else
+			{
 				plane_video.properties.rx =	180 + camera.rotation.x*57.2958;
 				plane_video.properties.ry =	180 - camera.rotation.y*57.2958;
 				plane_video.properties.rz =	0 + camera.rotation.z*57.2958;
@@ -731,24 +721,11 @@ console.log("video_02");
 				plane_video.properties.atv = krpano_panoview.v;
 				update_object_properties(plane_video);
 			}
-
 			
 			
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-		for (var i=0; i < animatedobjects.length; i++)
-		{
-			animatedobjects[i].updateAnimation(1000 * delta);
-			
-			
-			krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
-			animatedobjects[i].properties.ath = krpano_panoview.h;
-			animatedobjects[i].properties.atv = krpano_panoview.v;
-			update_object_properties(animatedobjects[i]);
-		}
 
 		handle_mouse_hovering();
 	}
