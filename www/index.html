@@ -22,8 +22,30 @@
 
 		}
 		function onDeviceReady() {
-			window.plugins.insomnia.keepAwake();
+			//window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
+			
+			setTimeout(function(){
+				alert("1");
+				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+				alert("2");
+				setBrightness(0.1);
+				alert("3");
+			}, 1000);			
+			function setBrightness(value) {
+				// value should be float in range from 0 to 1.
+				brightness.setBrightness(value, win, fail);
+			}
+			function getBrightness() {
+				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
+				brightness.getBrightness( win, fail);
+			}
+			function win(status) {
+				alert('Message: ' + status);
+			}
+			function fail(status) {
+				alert('Error: ' + status);
+			}
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
