@@ -328,7 +328,8 @@
 			<cube url="panos/object/bg.jpg" />
 		</image>
 		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />		
+		<!--<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />-->
+		<plugin name="goldun_text" url="plugins/three.krpanoplugin.text.js" object_enabled="true" folder="panos/goldun/text.png" object_height="800" object_width="800" object_scale="2" capture="false" zorder="0" devices="html5" />
 	</scene>
 	
 	<scene name="scene_object_car" title="object" thumburl="panos/object-car/thumb.jpg" onstart="action(startscene);">
