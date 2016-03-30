@@ -491,6 +491,7 @@ function krpanoplugin()
 		object_count = parseInt(plugin.object_count);
 		
 		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "/000.jpg"))}));
+		/*
 		for (i = 0; i < object_count; i++) {
 			var i_temp = i*10;
 			if(i_temp == 0)
@@ -501,6 +502,7 @@ function krpanoplugin()
 			// plane.material.needsUpdate = true;
 			
 		}
+		*/
 		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("vr_menu_loadhome();");}, onup:function(obj){ }});
 		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene('scene_01_sphere', 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
 		// assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){scene.remove( plane );krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
