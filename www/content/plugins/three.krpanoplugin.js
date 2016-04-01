@@ -676,8 +676,7 @@ function krpanoplugin()
 			plane.properties.ath = krpano_panoview.h;
 			plane.properties.atv = krpano_panoview.v;
 			update_object_properties(plane);
-			
-			/**/
+/*
 			var src = krpano_panoview.h;
 			src = Math.floor(src/4);
 			src = src % object_count;
@@ -690,7 +689,7 @@ function krpanoplugin()
 				src = "000";
 			else if(src < 100)
 				src = "0" + src;
-/*
+
 			if(src != active_image)
 			{
 				active_image = src;
