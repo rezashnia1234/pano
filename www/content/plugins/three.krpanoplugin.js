@@ -481,18 +481,18 @@ function krpanoplugin()
 		//object_count = parseInt(plugin.object_count);
 		alert("0");
 		plane = new THREE.Mesh(new THREE.BoxGeometry(plugin.object_width,plugin.object_height,0), new THREE.MeshBasicMaterial({map:THREE.ImageUtils.loadTexture(resolve_url_path(plugin.folder + "000.jpg"))}));
-		/**/
+		/*
 		for (i = 0; i < object_count; i++) {
 			var i_temp = i*10;
 			if(i_temp == 0)
 				i_temp = "000";
 			else if(i_temp < 100)
 				i_temp = "0" + i_temp;
-			plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + "/" + i_temp + ".jpg") );
+			plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + i_temp + ".jpg") );
 			// plane.material.needsUpdate = true;
 			
 		}
-		
+		*/
 		assign_object_properties(plane, "plane", {ath:90, atv:0,rz:180, depth:2000,scale:plugin.object_scale, ondown:function(obj){krpano.call("loadscene(get(plugin[WebVR].pervious_pano), 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");}, onup:function(obj){ }});
 		scene.add( plane );
 		// scene.remove( plane );
@@ -694,7 +694,7 @@ function krpanoplugin()
 			{
 				active_image = src;
 				// krpano.trace(3,"floor:" +	src		);
-				plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + "/" + src + ".jpg") );
+				plane.material.map = THREE.ImageUtils.loadTexture( resolve_url_path(plugin.folder + src + ".jpg") );
 				plane.material.needsUpdate = true;
 			}
 			
