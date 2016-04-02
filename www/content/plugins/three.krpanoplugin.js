@@ -686,7 +686,7 @@ function krpanoplugin()
 			alert(src);
 			// src = Math.floor(src/4);
 			src = ~~(src/4);
-			alert(src);
+			alert(src + "///000///" + object_count);
 			// src = src % object_count;
 			src = my_mod(src,object_count);
 			alert(src);
