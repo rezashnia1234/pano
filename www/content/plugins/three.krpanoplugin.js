@@ -678,11 +678,15 @@ function krpanoplugin()
 			update_object_properties(plane);
 
 			var src = krpano_panoview.h;
+			alert(src);
 			// src = Math.floor(src/4);
 			src = ~~(src/4);
+			alert(src);
 			src = src % object_count;
+			alert(src);
 			if(src<0)
 				src = object_count + src;
+			alert(src);
 			src = src * 10;
 			alert(src);
 /*
