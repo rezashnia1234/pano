@@ -664,7 +664,12 @@ function krpanoplugin()
 	{
 		// animate objects
 		var delta = clock.getDelta();
-
+		function my_mod(x,y)
+		{
+		  z=~~(x/y);
+		  z= x - z*y;
+		  return z;
+		}
 			//movie object:
 			/**/
 			krpano_panoview = krpano.view.getState(krpano_panoview);	// the 'krpano_panoview' object will be created and cached inside getState()
@@ -682,7 +687,8 @@ function krpanoplugin()
 			// src = Math.floor(src/4);
 			src = ~~(src/4);
 			alert(src);
-			src = src % object_count;
+			// src = src % object_count;
+			src = my_mod(src,object_count);
 			alert(src);
 			if(src<0)
 				src = object_count + src;
