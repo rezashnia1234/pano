@@ -684,7 +684,7 @@ function krpanoplugin()
 			if(src<0)
 				src = object_count + src;
 			src = src * 10;
-
+			alert(src);
 /*
 			if(src == 0)
 				src = "000";
