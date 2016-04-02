@@ -22,31 +22,8 @@
 
 		}
 		function onDeviceReady() {
-			//window.plugins.insomnia.keepAwake();
+			window.plugins.insomnia.keepAwake();
 			//window.plugins.insomnia.allowSleepAgain();
-			
-			setTimeout(function(){
-				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
-				setBrightness(1);
-		        // prevents sleep
-				brightness.setKeepScreenOn(true);
-				// returns normal behavior
-				//pluginService.brightness.setKeepScreenOn(false);
-			}, 1000);			
-			function setBrightness(value) {
-				// value should be float in range from 0 to 1.
-				brightness.setBrightness(value, win, fail);
-			}
-			function getBrightness() {
-				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
-				brightness.getBrightness( win, fail);
-			}
-			function win(status) {
-				//alert('Message: ' + status);
-			}
-			function fail(status) {
-				//alert('Error: ' + status);
-			}
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
@@ -59,11 +36,8 @@
 	</script>
 </head>
 <body onload="init();">
-	<a href="content/vtour.html" style='z-index:11;text-align: center; font-family: tahoma; font-size: 15px; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; vertical-align: middle; width: 100%; color: white; text-decoration: none; display: block; height: 48px;'>
+	<a href="vtour.html" style='text-align: center; font-family: tahoma; font-size: 15px; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; vertical-align: middle; width: 100%; color: white; text-decoration: none; display: block; height: 48px;'>
 		ورود به تور مجازی
-	</a>
-	<a href="vibrate.html" style='z-index:10;text-align: center; font-family: tahoma; font-size: 15px; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; vertical-align: middle; width: 100%; color: white; text-decoration: none; display: block; height: 48px;'>
-		<br/><br/>ورود به تور مجازی222
 	</a>
 </body>
 </html>
