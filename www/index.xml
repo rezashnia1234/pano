@@ -1,0 +1,99 @@
+<krpano onstart="startup();" showerrors="true" logkey="true">
+
+	<action name="startup">
+		loadscene("video_scene", null, MERGE);
+		//loadscene("scene_01_sphere", null, MERGE);
+		smgroup_startup();
+		start_vr();
+	</action>
+	
+	<action name="smgroup_startup" type="Javascript" autorun="">
+		<![CDATA[
+			//var pathname = window.location.pathname; // Returns path only
+			//var url      = window.location.href;     // Returns full URL
+			//alert(url);
+			//alert(pathname);
+			/*
+			setTimeout(function(){
+				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    2222');
+				var isCordovaApp = !window.cordova;
+				if(!isCordovaApp)
+				{
+					$("body").html("<center style='text-align: center;font-family: tahoma;font-size: 15px;position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;display: table;vertical-align: middle;width: 100%;'>شما مجاز به استفاده از این برنامه نمی باشید</center>");
+				}
+			}, 1000);
+			*/
+		]]>
+	</action>
+	
+	<!-- use the dragging control by default -->
+	<control mousetype="drag2d" />
+
+
+	<plugin name="gyro" devices="html5" keep="true"
+			url="%SWFPATH%/plugins/gyro2.js" 
+			enabled="true"
+			camroll="true"
+			friction="0.0"
+			touch_mode="full"
+			sensor_mode="1"
+			autocalibration="true"
+			onavailable=""
+			onunavailable=""
+			onenable=""
+			ondisable=""
+			/>
+	<!--
+		SPECIAL CASE FOR THE VIDEO PANO ON MOBILE DEVICES
+		- on mobile devices its only possible to start a video by as reaction to
+		  a touch-input of the user (a given limitation by the browsers)
+		- but this will be problemtic when using a VR-navigation without any touching,
+		  taking off the headset and touching to start the video would be bad...
+		- as workaround load the video already on startup and use the first
+		  touch on the screen (e.g. the touch to the 'Enter VR' button) to
+		  start playing the video
+		- the video itself will be directly paused after having started and
+		  not shown on the screen (visible=false)
+		- additionally there the new setting 'use_as_videopano' that prepares
+		  the video for a later (=in an other scene) usage as video pano
+	-->
+
+	<events name="video_events" devices2="mobile.or.tablet" keep="true"
+			onmousedown="video_auto_start();"
+			onremovepano="if(xml.scene != video_scene, plugin[video].seek(0); plugin[video].pause(); );"
+			/>
+	<action name="video_auto_start">
+		if(video_auto_start !== true,
+			if(plugin[video].ispaused,
+				plugin[video].play();
+				delayedcall(0.1, plugin[video].pause() );
+				set(events[video_events].onmousedown, null);
+				set(video_auto_start, true);
+			  );
+		  );
+	</action>
+
+	<scene name="video_scene" onstart="plugin[video].play();action(startscene);">
+		<plugin name="video"
+				url.flash="%SWFPATH%/plugins/videoplayer.swf"
+				url.html5="%SWFPATH%/plugins/videoplayer.js"
+				videourl="panos/video/home_nosound.mp4"
+				loop="true"
+				pausedonstart="false"
+				visible="false"
+				use_as_videopano="true"
+				/>
+		<image>
+			<sphere url="plugin:video" />
+		</image>
+	</scene>
+	<!-- SPECIAL CASE END -->
+
+	
+	
+	<!-- TEMP PRE-RELEASE STUFF -->
+	<!--<display hotspotrenderer="webgl" devices="html5" />-->	<!-- force using WebGL for the hotspots -->
+	<display hotspotrenderer="auto" devices="html5" />	<!-- force using WebGL for the hotspots -->
+	<!-- TEMP PRE-RELEASE STUFF -->
+
+</krpano>
