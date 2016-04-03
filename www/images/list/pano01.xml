@@ -1,0 +1,28 @@
+<krpano onstart="startup();" showerrors="true" logkey="true">
+	<action name="startup">
+		loadscene("pano", null, MERGE);
+	</action>
+	<plugin name="gyro" devices="html5" keep="true"
+			url="%SWFPATH%/plugins/gyro2.js" 
+			enabled="true"
+			camroll="true"
+			friction="0.0"
+			touch_mode="full"
+			sensor_mode="1"
+			autocalibration="true"
+			onavailable=""
+			onunavailable=""
+			onenable=""
+			ondisable=""
+			/>
+			
+	<scene name="pano" title="model" >
+		<image >
+			<sphere url="%SWFPATH%/images/list/muze.jpg" />
+		</image>
+	</scene>
+	
+	
+	
+	
+</krpano>
