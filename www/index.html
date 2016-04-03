@@ -6,25 +6,171 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="css/font.css" />
+
 	<style>
 		@-ms-viewport { width: device-width; }
 		@media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
 		html { height:100%; }
-		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Iranian_Sans,tahoma, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
 		iframe {border: 0px solid transparent !important;width: 100%;}
+		*{
+			-webkit-touch-callout: none !important;
+			-webkit-user-select: none !important;
+			-khtml-user-select: none !important;
+			-moz-user-select: none !important;
+			-ms-user-select: none !important;
+			-o-user-select: none !important;
+			user-select: none !important;
+			outline-style:none !important;
+		}
+		
+	
+		/*//START SLIDER////////////////////////////////////////////////////////////////////////////////////*/
+		/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+		/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+			.slidesjs-pagination {
+			  margin: 6px 0 6px 0;
+			  list-style: none;
+			}
+			.slidesjs-pagination li {
+			  display: inline-block;
+			  margin: 0 1px;
+			}
+
+			.slidesjs-pagination li a {
+			  display: block;
+			  width: 10px;
+			  height: 0;
+			  padding-top: 10px;
+			  background-image: url(images/pagination.png);
+			  background-position: 0 0;
+			  float: left;
+			  overflow: hidden;
+			}
+
+			.slidesjs-pagination li a.active,
+			.slidesjs-pagination li a:hover.active {
+			  background-position: 0 -10px
+			}
+
+			.slidesjs-pagination li a:hover {
+			  background-position: 0 -26px
+			}
+
+			.slidesjs-pagination li a {
+			  display: inline-block;
+			  float: none;
+			  background-size: 10px auto;
+			}
+			.slidesjs-pagination {
+				margin: 6px 0 6px 0;
+				list-style: none;
+				position: fixed;
+				bottom: 11.5%;
+				left: 0;
+				z-index: 9999999;
+				width:100%;
+				text-align:center;
+				padding: 0 !important;
+			}
+
+			.silde_frame{
+				width:100%;
+				text-align:center;
+			}
+
+		/*//END SLIDER//////////////////////////////////////////////////////////////////////////////////////*/
+		/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+		/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+		#silde_text{
+			font-family:Iranian_Sans,tahoma;
+			text-align:center;
+			direction:rtl;
+			padding:0 10px;
+		}
+		.silde_frame_image{
+			width: 85px; margin:96% auto 14px auto;display:block;
+		}
+		#enter_btn{
+			background-color:transparent;
+			border:1px solid #ffffff;
+			padding:10px;
+			width:86%;
+			box-sizing: border-box;
+			position:absolute;
+			bottom:4%;
+			left:50%;
+			margin-left:-43%;
+			text-align:center;
+			direction:rtl;
+			z-index:999999999;
+		}
+		#logo{
+			background-color:transparent;
+			width:30%;
+			box-sizing: border-box;
+			position:absolute;
+			left:50%;
+			margin-top:23%;
+			margin-left:-15%;
+			display:block;
+			z-index:999999999;
+		}
+		@media only screen and (min-device-width: 370px) {
+			.silde_frame_image{margin:104% auto 14px auto;}
+			#silde_text{padding:0 15px;}
+		}
+		@media only screen and (min-device-width: 400px) {
+			.silde_frame_image{margin:108% auto 14px auto;}
+			#silde_text{padding:0 15px;}
+		}
 	</style>
 	<script src="js/jquery-1.11.3.min.js"></script>
     <script src="phonegap.js"></script>
+	<script src="js/jquery.slides.min.js"></script>
+	
 	<script>
 		function init() {		
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
 			document.addEventListener("deviceready", onDeviceReady, false);
-
+			$("#slides").slidesjs({
+				width: 400,
+				//height: 400,
+				navigation: {
+					active: true,
+					effect: "slide",//"slide"fade
+				},
+				pagination: {
+					active: true,
+					effect: "slide",//"slide"fade
+				},
+				effect: {
+					fade: {
+						speed: 800
+					}
+				},
+				play: { auto: false},
+				callback: {
+					loaded: function(number) {
+						// Do something awesome!
+						// Passes start slide number
+					},
+					start: function(number) {
+						// Do something awesome!
+						// Passes slide number at start of animation
+					},
+					complete: function(number) {
+						// Do something awesome!
+						// Passes slide number at end of animation
+					}
+				}
+			});
 		}
 		function onDeviceReady() {
-			alert(screen.orientation);
-			screen.lockOrientation('portrait');
-			alert(screen.orientation);
+			//alert(screen.orientation);
+			//screen.lockOrientation('portrait');
+			//alert(screen.orientation);
 			
 			setTimeout(function(){
 				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
@@ -58,17 +204,66 @@
 
 	</script>
 </head>
-<body onload="init();" style="background-color:#ffffff;">
-<script src="tour.js?0"></script>
-<!--<div id="gyro" style="">00000000000000000</div>-->
+<body onload="init();" >
+			<img src="images/intro/logo.png"	id="logo"	style=""  />
+			<div id="slides" style="overflow: hidden; position: fixed; left: 0px; right: 0px; width: 100%; height: 100%;z-index: 999999;">
+				<div class="silde_frame slide1th" >
+					<img src="images/intro/welcome_icon.png"	class="silde_frame_image" style=""  />
+					<div id="silde_text" style="">
+						<b>خوش آمدید</b>
+						<br/>
+						<span style="font-size:15px;margin-top:5px;display: block;line-height: 145%;">
+						به نسخه آزمایشی این برنامه خوش آمدید.
+						دراین برنامه شما میتوانید باحرکت دادن تلفن هوشمند خود،تمام زوایای اطراف را ببینید.
+						</span>
+					</div>
+				</div>
+				<div class="silde_frame slide2th" >
+					<img src="images/intro/swipe_icon.png"		class="silde_frame_image" style=""  />
+					<div id="silde_text" style="">
+						<b>انگشت خود را روی صفحه بکشید</b>
+						<br/>
+						<span style="font-size:15px;margin-top:5px;display: block;line-height: 145%;">
+						همچنین شما میتوانید با کشیدن انگشت بر روی صفحه ، تمام زوایای اطراف خود را ببینید.
+						</span>
+					</div>
+				</div>
+				<div class="silde_frame slide3th" >
+					<img src="images/intro/headset_icon.png"	class="silde_frame_image" style=""  />
+					<div id="silde_text" style="">
+						<b>هدست واقعیت مجازی</b>
+						<br/>
+						<span style="font-size:15px;margin-top:5px;display: block;line-height: 145%;">
+						برای استفاده از هدست واقعیت مجازی ، در هنگام مشاهده تصاویر ، روی آیکن هدست در گوشه سمت راست صفحه کلیک نمایید.
+						</span>
+					</div>
+				</div>
+				<div class="silde_frame slide4th" >
+					<img src="images/intro/explore_icon.png"	class="silde_frame_image" style=""  />
+					<div id="silde_text" style="">
+						<b>ورود به برنامه</b>
+						<br/>
+						<span style="font-size:15px;margin-top:5px;display: block;line-height: 145%;">
+						روی کلید "ورود به برنامه" کلیک نموده و از سفر مجازی به دور دنیا لذت ببرید.
+						</span>
+					</div>
+				</div>
 
+				<!--
+				<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+				<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+				-->
+			</div>
+			<div id="enter_btn" onclick="window.location.href='vtour.html';">ورود به برنامه</div>
+<!---->
+<script src="tour.js?0"></script>
 <div id="pano" style="width:100%;height:100%;">
 	<noscript><table style="width:100%;height:100%;"><tr style="valign:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
 	<script>
 		embedpano({swf:"tour.swf?0", xml:"index.xml?0", target:"pano", html5:"only", passQueryParameters:true});
 	</script>
-	<!--embedpano({swf:"tour.swf?0", xml:"tour.xml?0", target:"pano", html5:"only", passQueryParameters:true});-->
 </div>
+
 <div id="placeholder" style0="display:none"></div>
 </body>
 </html>
