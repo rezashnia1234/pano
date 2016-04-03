@@ -14,7 +14,7 @@
 		iframe {border: 0px solid transparent !important;width: 100%;}
 	</style>
 	<script src="js/jquery-1.11.3.min.js"></script>
-    <!--<script src="phonegap.js"></script>-->
+    <script src="phonegap.js"></script>
 	<script>
 		function init() {		
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
@@ -22,9 +22,32 @@
 
 		}
 		function onDeviceReady() {
-			//window.plugins.insomnia.keepAwake();
-			//window.plugins.insomnia.allowSleepAgain();
-		
+			alert(screen.orientation);
+			screen.lockOrientation('portrait');
+			alert(screen.orientation);
+			
+			setTimeout(function(){
+				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+				setBrightness(1);
+		        // prevents sleep
+				brightness.setKeepScreenOn(true);
+				// returns normal behavior
+				//pluginService.brightness.setKeepScreenOn(false);
+			}, 1000);			
+			function setBrightness(value) {
+				// value should be float in range from 0 to 1.
+				brightness.setBrightness(value, win, fail);
+			}
+			function getBrightness() {
+				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
+				brightness.getBrightness( win, fail);
+			}
+			function win(status) {
+				//alert('Message: ' + status);
+			}
+			function fail(status) {
+				//alert('Error: ' + status);
+			}
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
