@@ -34,6 +34,7 @@
 		function onDeviceReady() {
 			//alert(screen.orientation);
 			//alert(screen.orientation);
+			
 alert("0");
 			setTimeout(function(){
 alert("1");
@@ -44,15 +45,15 @@ alert("3");
 				brightness.setKeepScreenOn(true);
 alert("4");
 				var orientation = getParameterByName("orientation");
-alert("orientation" + orientation);
+alert("orientation:" + orientation);
 				var target		= getParameterByName("target");
-alert("target" + target);				
-				if(target!=NULL && target!="")
+alert("target:" + target);				
+				if(target != "")
 				{
 alert("5");
 					if(orientation == "portrait")
 						screen.lockOrientation('portrait');
-					else if(orientation == "landscape")
+					else(orientation == "landscape")
 						screen.lockOrientation('landscape');
 alert("6");
 					window.location.href=target;

@@ -50,9 +50,7 @@
 			});
 		}
 		function onDeviceReady() {
-			//alert(screen.orientation);
-			//screen.lockOrientation('portrait');
-			//alert(screen.orientation);
+			screen.lockOrientation('portrait');
 			
 			setTimeout(function(){
 				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
