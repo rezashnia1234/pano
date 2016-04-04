@@ -22,7 +22,6 @@
 			
 			
 			all_elements = $('.content');
-			/*
 			var findMiddleElement = (function(docElm){
 				var viewportHeight = docElm.clientHeight,
 					// here i'm using pre-cached DIV elements, but you can use anything you want.
@@ -60,11 +59,9 @@
 			})(document.documentElement);
 
 			$(window).on('scroll resize', findMiddleElement);
-			*/
-			
+
 			var Top1th = $('#header');
 			var Top2th = $('#header_fixed');
-			var scrollTop     = $(window).scrollTop();
 			$(window).scroll(function() {
 				//console.log(Top2th.offset().top);
 				if((Top2th.offset().top+0) < 70)
@@ -75,21 +72,6 @@
 				{
 					Top2th.css("opacity","1");
 				}
-				
-				all_elements = $('.active');
-				all_elements = $('.content');
-				var scrollTop     = $(window).scrollTop();
-				all_elements.each(function() {
-					var elementOffset = $(this).offset().top;
-					var distance      = (elementOffset - scrollTop);
-					//console.log(distance);
-					if((distance>170)	&&	(distance<360)	)
-					{
-						$('.content').removeClass("active");
-						$(this).addClass("active");
-						return false;
-					}
-				});
 			});
 		}
 		function onDeviceReady() {
