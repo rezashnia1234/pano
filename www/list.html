@@ -18,50 +18,7 @@
 		function init() {		
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
 			document.addEventListener("deviceready", onDeviceReady, false);
-
-			
-			
-			all_elements = $('.content');
-			/*
-			var findMiddleElement = (function(docElm){
-				var viewportHeight = docElm.clientHeight,
-					// here i'm using pre-cached DIV elements, but you can use anything you want.
-					// Cases where elements are generated dynamically are more CPU intense ofc.
-					//elements = $('.content');
-					elements = all_elements;
-
-				return function(e){
-					var middleElement;
-					if( e && e.type == 'resize' )
-						viewportHeight = docElm.clientHeight;
-
-					elements.each(function(){
-						var pos = this.getBoundingClientRect().top;
-						// if an element is more or less in the middle of the viewport
-						//if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
-						if( pos > viewportHeight/2.5 && pos < viewportHeight/1.8 ){
-							//middleElement = $(this);
-							middleElement = this;
-							last_element_jquery = $(this);
-							return false; // stop iteration 
-						}
-					});
-					if(middleElement)
-					{
-						if(last_element!=middleElement)
-						{
-							last_element = middleElement;
-							$('.content').removeClass("active");
-							last_element_jquery.addClass("active");
-							//console.log(middleElement);
-						}
-					}					
-				}
-			})(document.documentElement);
-
-			$(window).on('scroll resize', findMiddleElement);
-			*/
-			
+		
 			var Top1th = $('#header');
 			var Top2th = $('#header_fixed');
 			var scrollTop     = $(window).scrollTop();
@@ -76,9 +33,8 @@
 					Top2th.css("opacity","1");
 				}
 				
-				all_elements = $('.active');
-				all_elements = $('.content');
-				var scrollTop     = $(window).scrollTop();
+				all_elements	= $('.content');
+				var scrollTop   = $(window).scrollTop();
 				all_elements.each(function() {
 					var elementOffset = $(this).offset().top;
 					var distance      = (elementOffset - scrollTop);
