@@ -34,30 +34,37 @@
 		function onDeviceReady() {
 			//alert(screen.orientation);
 			//alert(screen.orientation);
-			
+alert("0");
 			setTimeout(function(){
+alert("1");
 				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+alert("2");
 				setBrightness(1);
+alert("3");
 				brightness.setKeepScreenOn(true);
-
+alert("4");
 				var orientation = getParameterByName("orientation");
+alert("orientation" + orientation);
 				var target		= getParameterByName("target");
-				
+alert("target" + target);				
 				if(target!=NULL && target!="")
 				{
+alert("5");
 					if(orientation == "portrait")
 						screen.lockOrientation('portrait');
 					else if(orientation == "landscape")
 						screen.lockOrientation('landscape');
-					
+alert("6");
 					window.location.href=target;
 				}
 				else
 				{
+alert("7");
 					screen.lockOrientation('portrait');
 					window.location.href='index.html';
 				}
-			}, 500);			
+			}, 500);
+alert("10");			
 			function setBrightness(value) {
 				// value should be float in range from 0 to 1.
 				brightness.setBrightness(value, win, fail);
