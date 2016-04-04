@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>بسم الله الرحمن الرحيم</title>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/font.css" />
+	<script src='js/jquery-1.11.3.min.js'></script>
+	<script src='js/skrollr.min.js'></script>
+    <script src="phonegap.js"></script>
+	<script src="tour.js"></script>
+	<script>
+		function init() {		
+			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
+			document.addEventListener("deviceready", onDeviceReady, false);			
+		}
+		function onDeviceReady() {
+			//alert(screen.orientation);
+			//screen.lockOrientation('portrait');
+			//alert(screen.orientation);
+			
+			setTimeout(function(){
+				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+				setBrightness(1);
+				brightness.setKeepScreenOn(true);
+			}, 1000);			
+			function setBrightness(value) {brightness.setBrightness(value, win, fail);}
+			function getBrightness() {brightness.getBrightness( win, fail);}
+			function win(status) {}
+			function fail(status) {}
+		}
+		$(document).ready(function() {
+			skrollr.init({ smoothScrolling: true });
+			setTimeout(function(){
+
+				
+			}, 1000);
+		});
+	</script>
+		
+	<style class="cp-pen-styles">html, body {
+		  background: #fafafa;
+		  color: #1BBBFB;
+		  font-family: sans-serif;
+		}
+
+		#page {
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		}
+
+		#toolbar {
+		  display: block;
+		  position: fixed;
+		  width: 100%;
+		  z-index: 10;
+		  box-sizing: border-box;
+		  -moz-box-sizing: border-box;
+		  background-color: #1BBBFB;
+		  padding: 0 16px;
+		  z-index:999999999;
+		}
+
+		#actions {
+		  position: relative;
+		  display: flex;
+		  align-items: center;
+		  flex-direction: row;
+		  height: 64px;
+		  top: 0;
+		  left: 0;
+		  right 0;
+		}
+
+		#actions .icon {
+		  padding: 7px;
+		  margin: 2px;
+		  vertical-align: middle;
+		}
+
+		#actions .spacer {
+		  flex: 1;
+		}
+
+		#actions svg {
+		  display: inline-block;
+		  pointer-events: none;
+		  position: relative;
+		  vertical-align: middle;
+		  width: 24px;
+		  height: 24px;
+		  fill: #fff;
+		}
+
+		#title {
+		  padding: 21px;
+		  position: absolute;
+		  bottom: 0;
+		  color: #fff;
+		}
+
+		#content {
+			display: block;
+			position: relative;
+			background-color:#eeeeee;
+			padding:8px;
+		}
+
+		.card {
+		  display: block;
+		  position: relative;
+		  width: 60%;
+		  height: 100px;
+		  border: 1px solid #1BBBFB;
+		  -webkit-border-radius: 4px; 
+		  -moz-border-radius: 4px;   
+		  border-radius: 4px;
+		  background-color: #fff;
+		  margin: 16px auto;
+		  padding: 24px;
+		}
+	</style>
+	<style>
+		.header{
+			width:100%;
+			height:180px;
+			background-image:url("images/list/home_mono.png");
+			background-size: cover;
+			background-position:top center;
+			
+		}
+		.header_title{
+			position:absolute;
+			color:white;
+			top:25px;
+			right:25px;
+		}
+		.pano{
+			width:100%;
+			height:171px;
+		}
+		.main{
+			background-color:#eeeeee;
+			padding:8px;
+			
+		}
+		.content{
+			background-color:#ffffff;
+			border:1px solid #e7e7e7;
+			height:259px;
+			margin-bottom:15px;
+		}
+		.pano_over{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:171px;
+			z-index:99999999;
+		}
+		.pano_logo{
+			position:absolute;
+			top:155px;
+			right:16px;
+			width:80px;
+			height:80px;
+			border:4px solid #e7e7e7;
+			z-index:99999999;
+			background-size: cover;
+			background-position:center center;
+		}
+		.pano_text{
+			position:absolute;
+			top:187px;
+			right:120px;
+			width2:80px;
+			height:80px;
+			color:#000000;
+			z-index:99999999;
+			text-align:right;
+			direction:rtl;
+			line-height:190%;
+		}
+	</style>
+</head>
+<body>
+<div id="page">
+  <div id="toolbar" data-0="height:192px" data-128="height: 64px">
+    <div id="actions">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" x="0px" y="0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="menu">
+            <path d="M3,18h18v-2H3V18z M3,13h18v-2H3V13z M3,6v2h18V6H3z"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="spacer"></div>
+      <div class="icon">
+      <svg viewBox="0 0 24 24" x="0px" y="0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="search">
+            <path d="M15.5,14h-0.8l-0.3-0.3c1-1.1,1.6-2.6,1.6-4.2C16,5.9,13.1,3,9.5,3C5.9,3,3,5.9,3,9.5S5.9,16,9.5,16c1.6,0,3.1-0.6,4.2-1.6l0.3,0.3v0.8l5,5l1.5-1.5L15.5,14z M9.5,14C7,14,5,12,5,9.5S7,5,9.5,5C12,5,14,7,14,9.5S12,14,9.5,14z"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="icon">
+      <svg viewBox="0 0 24 24" x="0px" y="0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="more-vert">
+            <path d="M12,8c1.1,0,2-0.9,2-2s-0.9-2-2-2c-1.1,0-2,0.9-2,2S10.9,8,12,8z M12,10c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S13.1,10,12,10z M12,16c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S13.1,16,12,16z"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div id="title" data-0="font-size: 48px; padding: 0 0 24px 12px;" data-128="font-size: 18px; padding: 0 0 21px 60px;">
+      Page Title
+    </div>
+  </div>
+  <div id="content" data-0="padding-top: 192px;" data-192="padding-top: 190px;">
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano01" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano01", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano02" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano02", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano03" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano03", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano04" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano04", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano05" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano05", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+		<div class="content">
+			<div class="pano_over" ></div>
+			<div class="pano" id="pano06" ><script>embedpano({swf:"tour.swf", xml:"images/list/pano01.xml", target:"pano06", html5:"auto", passQueryParameters:true});</script></div>
+			<div class="pano_logo" style="background-image:url('images/list/youtube_360_channel.png');" ></div>
+			<div class="pano_text" >موزه هدایایی رهبری آستان قدس رضوی</div>
+		</div>
+  </div>
+</div>
+</body></html>
