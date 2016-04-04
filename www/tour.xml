@@ -1,8 +1,8 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		loadscene("home", null, MERGE);
-		//loadscene("scene_01_sphere", null, MERGE);
+		//loadscene("home", null, MERGE);
+		loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
 		start_vr();
 	</action>
@@ -150,27 +150,27 @@
 			onmousedown="video_auto_start();"
 			onremovepano="if(xml.scene != video_scene, plugin[video].seek(0); plugin[video].pause(); );"
 			/>
-	<action name="video_auto_start">
-		if(video_auto_start !== true,
-			if(plugin[video].ispaused,
-				plugin[video].play();
-				delayedcall(0.1, plugin[video].pause() );
-				set(events[video_events].onmousedown, null);
-				set(video_auto_start, true);
-			  );
-		  );
-	</action>
-	<plugin name="video" keep="true"
-			url.flash="%SWFPATH%/plugins/videoplayer.swf"
-			url.html5="%SWFPATH%/plugins/videoplayer.js"
-			videourl.no-ios="panos/video/video-1920x960.mp4|panos/video/video-1920x960.webm"
-			videourl.ios="panos/video/video-1024x512.mp4"
-			loop="true"
-			pausedonstart="true"
-			visible="false"
-			use_as_videopano="true"
-			/>
 	<scene name="video_scene" onstart="plugin[video].play();action(startscene);">
+		<action name="video_auto_start">
+			if(video_auto_start !== true,
+				if(plugin[video].ispaused,
+					plugin[video].play();
+					delayedcall(0.1, plugin[video].pause() );
+					set(events[video_events].onmousedown, null);
+					set(video_auto_start, true);
+				  );
+			  );
+		</action>
+		<plugin name="video" keep="true"
+				url.flash="%SWFPATH%/plugins/videoplayer.swf"
+				url.html5="%SWFPATH%/plugins/videoplayer.js"
+				videourl.no-ios="panos/video/video-1920x960.mp4|panos/video/video-1920x960.webm"
+				videourl.ios="panos/video/video-1024x512.mp4"
+				loop="true"
+				pausedonstart="false"
+				visible="false"
+				use_as_videopano="true"
+				/>
 		<image>
 			<sphere url="plugin:video" />
 		</image>

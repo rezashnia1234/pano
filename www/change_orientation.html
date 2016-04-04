@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>بسم الله الرحمن الرحیم</title>
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="css/font.css" />
+
+	<style>
+		@-ms-viewport { width: device-width; }
+		@media only screen and (min-device-width: 800px) { html { overflow:hidden; } }
+		html { height:100%; }
+		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Iranian_Sans,tahoma, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+
+	</style>
+	<script src="js/jquery-2.2.2.min.js"></script>
+    <script src="phonegap.js"></script>
+	<script src="js/jquery.slides.min.js"></script>
+	
+	<script>
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+			return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		function init() {		
+			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
+			document.addEventListener("deviceready", onDeviceReady, false);
+			//alert("target:" + getParameterByName("target"));
+		}
+		function onDeviceReady() {
+			//alert(screen.orientation);
+			//alert(screen.orientation);
+			
+			setTimeout(function(){
+				window.brightness = cordova.require("cordova.plugin.Brightness.Brightness");
+				setBrightness(1);
+				brightness.setKeepScreenOn(true);
+
+				var orientation = getParameterByName("orientation");
+				var target		= getParameterByName("target");
+				
+				if(target!=NULL && target!="")
+				{
+					if(orientation == "portrait")
+						screen.lockOrientation('portrait');
+					else if(orientation == "landscape")
+						screen.lockOrientation('landscape');
+					
+					window.location.href=target;
+				}
+				else
+				{
+					screen.lockOrientation('portrait');
+					window.location.href='index.html';
+				}
+			}, 500);			
+			function setBrightness(value) {
+				// value should be float in range from 0 to 1.
+				brightness.setBrightness(value, win, fail);
+			}
+			function getBrightness() {
+				// win([-1,0-1]) float 0-1 is a brightness level, -1 represents a system default
+				brightness.getBrightness( win, fail);
+			}
+			function win(status) {
+				//alert('Message: ' + status);
+			}
+			function fail(status) {
+				//alert('Error: ' + status);
+			}
+		}
+		$(document).ready(function() {
+			setTimeout(function(){
+
+				
+			}, 1000);
+		});
+
+	</script>
+</head>
+<body onload="init();" >
+	<a href="#" style='direction:rtl;text-align: center; font-family: tahoma; font-size: 15px; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; vertical-align: middle; width: 100%; color: white; text-decoration: none; display: block; height: 48px;'>
+		لطفا منتظر بمانید...
+	</a>
+</body>
+</html>
