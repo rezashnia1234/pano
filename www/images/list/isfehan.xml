@@ -4,7 +4,7 @@
 	</action>
 	<plugin name="gyro" devices="html5" keep="true"
 			url="%SWFPATH%/plugins/gyro2.js" 
-			enabled="true"
+			enabled="false"
 			camroll="true"
 			friction="0.0"
 			touch_mode="full"
@@ -15,7 +15,8 @@
 			onenable=""
 			ondisable=""
 			/>
-			
+	<plugin name="gyro_activator" div_target="pano04" url="%SWFPATH%/images/list/activator.js" keep="true" devices="html5" />
+
 	<scene name="pano" title="model" >
 		<image >
 			<sphere url="%SWFPATH%/images/list/isfehan.jpg" />

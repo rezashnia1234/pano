@@ -15,7 +15,8 @@
 			onenable=""
 			ondisable=""
 			/>
-			
+	<plugin name="gyro_activator" div_target="pano01" url="%SWFPATH%/images/list/activator.js" keep="true" devices="html5" />
+
 	<scene name="pano" title="model" >
 		<image >
 			<sphere url="%SWFPATH%/images/list/muze.jpg" />
