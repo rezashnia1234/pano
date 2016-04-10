@@ -77,7 +77,7 @@
 		<plugin name="video"
 				url.flash="%SWFPATH%/plugins/videoplayer.swf"
 				url.html5="%SWFPATH%/plugins/videoplayer.js"
-				videourl="panos/video/home_nosound0.mp4"
+				videourl="panos/video/home_nosound.mp4"
 				loop="true"
 				pausedonstart="false"
 				visible="false"
