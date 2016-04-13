@@ -1,5 +1,5 @@
 /*
-	krpano 1.19-pr3 MoreTweenTypes Plugin (build 2015-08-04)
+	krpano 1.19-pr4 MoreTweenTypes Plugin (build 2016-04-07)
 	http://krpano.com/plugins/moretweentypes/
 */
 var krpanoplugin=function(){function d(a,c,b){return a<1/2.75?7.5625*b*a*a+c:a<2/2.75?b*(7.5625*(a-=1.5/2.75)*a+.75)+c:a<2.5/2.75?b*(7.5625*(a-=2.25/2.75)*a+.9375)+c:b*(7.5625*(a-=2.625/2.75)*a+.984375)+c}function e(a,c,b){return(1>(a/=.5)?b/2*a*a:-b/2*(--a*(a-2)-1))+c}function f(a,c,b){.5>a?(a*=2,c=-(b/2)*a*(a-2)+c):(a=2*a-1,c=b/2*a*a+(c+b/2));return c}function g(a,c,b){return 1>(a/=.5)?b/2*a*a*a+c:b/2*((a-=2)*a*a+2)+c}function h(a,c,b){.5>a?(a*=2,c=b/2*(--a*a*a+1)+c):(a=2*a-1,c=b/2*a*a*a+(c+b/2));

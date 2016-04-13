@@ -2,11 +2,11 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "ir.smgroup.pano"
-        version   = "1.33" >
+        version   = "1.10" >
 		
 		
-    <name>تست پانو</name>
-    <description>تست پانو</description>
+    <name>تماشاخانه</name>
+    <description>تماشاخانه</description>
     <author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
     <!--
         If you do not want any permissions to be added to your app, add the

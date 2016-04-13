@@ -5,7 +5,7 @@
 		- extended <textstyle> functionality compared to the build-in showtext() action
 		- just include this xml file via: <include url="showtext.xml" />
 		- docu: http://krpano.com/plugins/showtext/
-		- krpano 1.18
+		- krpano 1.19
 	-->
 
 
@@ -97,10 +97,10 @@
 		copy(tf.css, tf_css);
 
 		<!-- size settings -->
-		if(ts.width   !== null, copy(tf.width,   ts.width));
-		if(ts.height  !== null, copy(tf.height,  ts.height));
-		if(ts.vcenter !== null, copy(tf.vcenter, ts.vcenter));
-		if(ts.padding !== null, copy(tf.padding, ts.padding), set(tf.padding,1));
+		if(ts.width   !== null AND ts.width   !== '', copy(tf.width,   ts.width));
+		if(ts.height  !== null AND ts.height  !== '', copy(tf.height,  ts.height));
+		if(ts.vcenter !== null AND ts.vcenter !== '', copy(tf.vcenter, ts.vcenter));
+		if(ts.padding !== null AND ts.padding !== '', copy(tf.padding, ts.padding), set(tf.padding,1));
 
 		<!-- background, border, shadow settings -->
 		if(ts.background      !== null, copy(tf.background,      ts.background));
