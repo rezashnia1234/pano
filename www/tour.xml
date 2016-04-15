@@ -401,6 +401,7 @@
 					alpha="1.00"
 					rx="0" ry="0" rz="0"
 					depth="off"
+					enabled="false"
 		/>
 		<!--
 		<hotspot name="rotate_object_000" style="rotate_object"
@@ -411,6 +412,19 @@
 		<!--<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />		-->
 		<plugin name="threejs" url="plugins/three.krpanoplugin.test.js" folder="panos/goldun/" object_name="rotate_object_000" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />
 	</scene>
+	<scene name="scene_object2" title="object" thumburl="panos/object/thumb.jpg" onstart="action(startscene);">
+		<preview url="panos/object/preview.jpg" />
+		<image >
+			<cube url="panos/object/bg.jpg" />
+		</image>
+		
+		
+		<!-- add the custom ThreeJS plugin -->
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />
+	</scene>
+	
+	
+	
 	
 	<scene name="scene_object_car" title="object" thumburl="panos/object-car/thumb.jpg" onstart="action(startscene);">
 		<preview url="panos/object-car/preview.jpg" />
