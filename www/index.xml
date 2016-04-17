@@ -74,6 +74,7 @@
 	</action>
 
 	<scene name="video_scene" onstart="plugin[video].play();action(startscene);">
+<!--
 		<plugin name="video"
 				url.flash="%SWFPATH%/plugins/videoplayer.swf"
 				url.html5="%SWFPATH%/plugins/videoplayer.js"
@@ -82,6 +83,17 @@
 				pausedonstart="false"
 				visible="false"
 				use_as_videopano="true"
+				/>
+-->
+		<plugin name="video" keep="true"
+				url.flash="%SWFPATH%/plugins/videoplayer.swf"
+				url.html5="%SWFPATH%/plugins/videoplayer.js"
+				videourl.no-ios="panos/video2/video-1920x960.mp4|panos/video2/video-1920x960.webm"
+				videourl.ios="panos/video2/video-1024x512.mp4"
+				loop="true"
+				pausedonstart="true"
+				visible="false"
+				panovideo="true"
 				/>
 		<image>
 			<sphere url="plugin:video" />
