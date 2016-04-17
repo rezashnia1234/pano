@@ -91,7 +91,7 @@
 				videourl.no-ios="panos/video2/video-1920x960.mp4|panos/video2/video-1920x960.webm"
 				videourl.ios="panos/video2/video-1024x512.mp4"
 				loop="true"
-				pausedonstart="true"
+				pausedonstart="false"
 				visible="false"
 				panovideo="true"
 				/>
