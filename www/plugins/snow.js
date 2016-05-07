@@ -1,5 +1,5 @@
 /*
-	krpano 1.19-pr4 Snow Plugin (build 2016-04-07)
+	krpano 1.19-pr3 Snow Plugin (build 2015-08-04)
 	http://krpano.com/plugins/snow/
 */
 var krpanoplugin=function(){function z(Y,A){A=!0===A;if(g&&B){var m=f.get("view");if(null!=m&&null!=m.r_rmatrix){var w=B,p=g.width,t=g.height;w.clearRect(0,0,p,t);var b,y=1;switch(String(a.mode).toLowerCase()){case "snow":y=1;break;case "image":y=3}var n=a.flakes;f.ismobile&&1E3<n&&(n=1E3);f.istablet&&2E3<n&&(n=2E3);var u=a.color,I=1E3*a.floor,C=1E3*a.spreading,J=1*a.imagescale,c=1*a.speed,D=1*a.shake,z=1*a.speedvariance,E=1*a.wind,q=a.winddir*Math.PI/180;X!=u&&(r=null,X=u);if(null==r){r=document.createElement("canvas");

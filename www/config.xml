@@ -5,8 +5,8 @@
         version   = "1.10" >
 		
 		
-    <name>تماشاخونه</name>
-    <description>تماشاخونه</description>
+    <name>تماشاخانه</name>
+    <description>تماشاخانه</description>
     <author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
     <!--
         If you do not want any permissions to be added to your app, add the

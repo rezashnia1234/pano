@@ -2,8 +2,7 @@
 
 	<action name="startup">
 		//loadscene("home", null, MERGE);
-		//loadscene("scene_01_sphere", null, MERGE);
-		loadscene("scene_object", null, MERGE);
+		loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
 		start_vr();
 	</action>
@@ -31,72 +30,7 @@
 	<include url="%SWFPATH%/plugins/webvr.xml" />
 
 	<!-- add/overwrite some settings from the webvr.xml for this example -->
-	<plugin name="WebVR"
-	        mobilevr_fake_support="true"
-	        onentervr="webvr_onentervr(); webvr_act_as_gyro_in_portrait_mode(true);"
-	        onexitvr="webvr_onexitvr(); tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0);"
-	        />
-
-	<!-- re-align the vr button and 'auto-start' the video when pressing the enterVR button -->
-	<layer name="webvr_enterbutton"
-	       align="bottom" y="10%"
-	       ondown2222222222222222222222222222222222222222222="video_auto_start();"
-	       />
-
-	<!-- show a 'rotate the device' info when the mobile device is in portrait orientation in VR mode -->
-	<layer name="webvr_rotate_to_landscape_request" keep="true" vr="true" devices="mobile"
-	       url="rotate_device.png" scale="0.5"
-	       align="top" edge="center" y="28%"
-	       autoalpha="true" alpha="0.0"
-	       enabled="false"
-	       />
-
-	<events name="webvr_events" keep="true" devices="html5"
-	        onresize.mobile="webvr_act_as_gyro_in_portrait_mode();"
-	        />
-
-	<action name="webvr_act_as_gyro_in_portrait_mode">
-		if(device.mobile AND webvr.isenabled,
-			div(aspect, stagewidth, stageheight);
-			if(aspect != lastaspect OR '%1' == 'true',
-				copy(lastaspect, aspect);
-				if(stagewidth GT stageheight,
-					<!-- landscape orientation - use stereo rendering and a direct/fast gyro sensor mode -->
-					set(display.stereo, true);
-					set(webvr.mobilevr_sensor_mode, 3);
-					webvr.update();
-					tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0);
-				  ,
-					<!-- portrait orientation - use normal rendering and a smoother/slower gyro sensor mode -->
-					set(display.stereo, false);
-					set(webvr.mobilevr_sensor_mode, 1);
-					webvr.update();
-					tween(layer[webvr_rotate_to_landscape_request].alpha, 1.0);
-					delayedcall(3.0, tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 1.0); );
-				  );
-			  );
-		  ,
-			set(lastaspect, 0);
-		  );
-	</action>
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<plugin name="WebVR" mobilevr_fake_support="true" />		<!-- enable the FAKE VR support to allow testing also on desktop and tablets without VR support -->
 	<layer name="webvr_button" ondown="video_auto_start();" />
 	<plugin name="MotionGesture" url="%SWFPATH%/plugins/motion_gesture.js" keep="true" devices="html5" target_pano="home" curent_pano="home22"  />
 	<action name="startscene">
@@ -227,6 +161,7 @@
 				  );
 			  );
 		</action>
+		<!--
 		<plugin name="video" keep="true"
 				url.flash="%SWFPATH%/plugins/videoplayer.swf"
 				url.html5="%SWFPATH%/plugins/videoplayer.js"
@@ -235,6 +170,16 @@
 				loop="true"
 				pausedonstart="false"
 				visible="false"
+				use_as_videopano="true"
+				/>
+		-->
+		<plugin name="video"
+				url.flash="%SWFPATH%/plugins/videoplayer.swf"
+				url.html5="%SWFPATH%/plugins/videoplayer.js"
+				videourl="panos/video/home_nosound.mp4"
+				loop="true"
+				pausedonstart="false"
+				visible="true"
 				use_as_videopano="true"
 				/>
 		<image>
@@ -393,39 +338,9 @@
 		<image >
 			<cube url="panos/object/bg.jpg" />
 		</image>
-		
-		
-		<style name="rotate_object"
-					zorder="1"
-					flying="1.0"
-					alpha="1.00"
-					rx="0" ry="0" rz="0"
-					depth="off"
-					enabled="false"
-					scale="0.5"
-		/>
-		<!--
-		<hotspot name="rotate_object_000" style="rotate_object"
-				 url="panos/goldun/000.jpg"
-				 />
-		-->
 		<!-- add the custom ThreeJS plugin -->
-		<!--<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="512" object_width="512" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />-->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.test.js" folder="panos/goldun/" object_name="rotate_object_000" object_height="512" object_width="512" object_scale="1" object_count="36" capture="false" zorder="0" devices="html5" />
+		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />		
 	</scene>
-	<scene name="scene_object2" title="object" thumburl="panos/object/thumb.jpg" onstart="action(startscene);">
-		<preview url="panos/object/preview.jpg" />
-		<image >
-			<cube url="panos/object/bg.jpg" />
-		</image>
-		
-		
-		<!-- add the custom ThreeJS plugin -->
-		<plugin name="threejs" url="plugins/three.krpanoplugin.js" folder="panos/goldun/" object_height="664" object_width="1000" object_scale="3" object_count="36" capture="false" zorder="0" devices="html5" />
-	</scene>
-	
-	
-	
 	
 	<scene name="scene_object_car" title="object" thumburl="panos/object-car/thumb.jpg" onstart="action(startscene);">
 		<preview url="panos/object-car/preview.jpg" />
@@ -675,5 +590,10 @@
 		delayedcall(0.25, %1; vr_menu_setvisibility(true); );
 	</action>
 
+	<!-- TEMP PRE-RELEASE STUFF -->
+	<!--<display hotspotrenderer="webgl" devices="html5" />-->	<!-- force using WebGL for the hotspots -->
+	<display hotspotrenderer="auto" devices="html5" />	<!-- force using WebGL for the hotspots -->
+	<view continuousupdates="true" devices="html5" />	<!-- constantly update the screen (required for WebGL hotspots for the moment) -->
+	<!-- TEMP PRE-RELEASE STUFF -->
 
 </krpano>

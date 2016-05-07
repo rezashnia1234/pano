@@ -38,7 +38,6 @@ function krpanoplugin()
         
 		
 		// load the requiered three.js scripts
-		// load_scripts(["plugins/three.min.75.js"], start);
 		load_scripts(["plugins/three.min.js"], start);
 	}
 
