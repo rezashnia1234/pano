@@ -46,7 +46,10 @@ var krpanoplugin = function()
 				}
 				else
 				{
-					window.location.href='change_orientation_r.html?orientation=landscape&target=vtour2.html';
+					if (((event.beta > 45 ) && (event.beta < 135)) || ((event.beta < -45 ) && (event.beta > -135)))
+					{
+						window.location.href='change_orientation_r.html?orientation=landscape&target=list.html';
+					}
 				}
 			}, true);
 		}
