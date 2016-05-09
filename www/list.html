@@ -83,11 +83,13 @@
 			background-image:url("images/list/home_mono.png");
 			background-size: cover;
 			background-position:top center;
+			display: table;
+			vertical-align: middle;
 		}
 		.header_fixed{
 			width:100%;
 			height:90px;
-			background-color:#43b8e9;
+			background-color:#028dbb;
 			background-image0:url("images/list/home_mono.png");
 			background-size: cover;
 			background-position:top center;
@@ -96,12 +98,22 @@
 			left:0;
 			opacity:0;
 			z-index:999999999;
+			
+			display: table;
+			vertical-align: middle;
 		}
 		.header_title{
-			position:absolute;
 			color:white;
-			top:25px;
 			right:25px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.header_fixed .header_title{
+			right:0;
+			text-align: center;
+		}
+		.header_fixed .header_title img{
+			width:45% !important;
 		}
 		.pano{
 			width:100%;
@@ -170,17 +182,17 @@
 </head>
 <body onload="init();">
 	<div id="ajax" class="mypreload">
-		<div style="z-index: 1000000001; border: medium none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: #332958; opacity: 1; cursor: default; position: fixed;overflow:visible;" class="blockUI blockOverlay"></div>
+		<div style="z-index: 1000000001; border: medium none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: #455a64; opacity: 1; cursor: default; position: fixed;overflow:visible;" class="blockUI blockOverlay"></div>
 		<div style="z-index: 1000000002; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 28%; left: 0%; text-align: center;border: medium none;overflow:visible;" class="blockUI blockMsg blockPage"><img src="images/preloader.gif"></div>
 		<div style="z-index: 1000000003; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 	</div>
 
 	<div class="header" id="header">
-		<div class="header_title">ایرانگردی مجازی</div>
+		<div class="header_title"><img src="images/list/logo-iran-gardi.png" style="width:65%;"></div>
 		<div class=""></div>
 	</div>
 	<div class="header_fixed" id="header_fixed">
-		<div class="header_title">ایرانگردی مجازی</div>
+		<div class="header_title"><img src="images/list/logo-iran-gardi.png" style="width:65%;"></div>
 		<div class=""></div>
 	</div>
 	<div class="main" id="main" >
@@ -196,7 +208,7 @@
 			<div class="pano_over" ></div>
 			<div class="pano" id="pano02" ><script>embedpano({swf:"tour.swf", xml:"images/list/sadabad-honar.xml", target:"pano02", html5:"auto", passQueryParameters:true});</script></div>
 			<div class="pano_logo" style="background-image:url('images/list/sadabad-honar.png');" ></div>
-			<div class="pano_text" >کاخ موزه سعد آباد - هنرهای زیبای</div>
+			<div class="pano_text" onclick="window.location.href='change_orientation.html?orientation=landscape&target=vtour2.html';" >کاخ موزه سعد آباد - هنرهای زیبای</div>
 		</div>
 		<div class="content">
 			<div class="pano_over_thumb" style="background-image:url('images/list/takhte-jamshid-thumb.jpg');" ></div>

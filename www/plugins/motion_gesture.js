@@ -44,6 +44,10 @@ var krpanoplugin = function()
 						krpano.call("loadscene(" + plugin.target_pano+ ", 0, null, NOPREVIEW|MERGE|KEEPVIEW|KEEPMOVING, BLEND(1));");
 					}
 				}
+				else
+				{
+					window.location.href='change_orientation_r.html?orientation=landscape&target=vtour2.html';
+				}
 			}, true);
 		}
 		else

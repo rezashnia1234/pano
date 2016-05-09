@@ -1,8 +1,8 @@
 <krpano onstart="startup();" showerrors="true" logkey="true">
 
 	<action name="startup">
-		//loadscene("home", null, MERGE);
-		loadscene("scene_01_sphere", null, MERGE);
+		loadscene("home", null, MERGE);
+		//loadscene("scene_01_sphere", null, MERGE);
 		smgroup_startup();
 		start_vr();
 	</action>
@@ -32,7 +32,7 @@
 	<!-- add/overwrite some settings from the webvr.xml for this example -->
 	<plugin name="WebVR" mobilevr_fake_support="true" />		<!-- enable the FAKE VR support to allow testing also on desktop and tablets without VR support -->
 	<layer name="webvr_button" ondown="video_auto_start();" />
-	<plugin name="MotionGesture" url="%SWFPATH%/plugins/motion_gesture.js" keep="true" devices="html5" target_pano="scene_01_sphere" curent_pano="home22"  />
+	<plugin name="MotionGesture" url="%SWFPATH%/plugins/motion_gesture.js" keep="true" devices="html5" target_pano="home" curent_pano="home22"  />
 	<action name="startscene">
 		//set(plugin[WebVR].pervious_pano,'home');
 		set(plugin[MotionGesture].curent_pano,get(scene[get(xml.scene)].name));
