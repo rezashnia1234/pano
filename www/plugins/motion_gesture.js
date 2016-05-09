@@ -46,6 +46,7 @@ var krpanoplugin = function()
 				}
 				else
 				{
+					/*
 					if (((event.beta > 45 ) && (event.beta < 135)) || ((event.beta < -45 ) && (event.beta > -135)))
 					{
 						setTimeout(function(){
@@ -55,6 +56,7 @@ var krpanoplugin = function()
 							}
 						}, 2500);
 					}
+					*/
 				}
 			}, true);
 		}
