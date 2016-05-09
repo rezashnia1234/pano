@@ -48,7 +48,12 @@ var krpanoplugin = function()
 				{
 					if (((event.beta > 45 ) && (event.beta < 135)) || ((event.beta < -45 ) && (event.beta > -135)))
 					{
-						window.location.href='change_orientation_r.html?orientation=landscape&target=list.html';
+						setTimeout(function(){
+							if (((event.beta > 45 ) && (event.beta < 135)) || ((event.beta < -45 ) && (event.beta > -135)))
+							{
+								window.location.href='change_orientation_r.html?orientation=landscape&target=list.html';
+							}
+						}, 2500);
 					}
 				}
 			}, true);
