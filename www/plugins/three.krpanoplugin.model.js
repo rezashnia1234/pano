@@ -144,6 +144,9 @@ function krpanoplugin()
 
 		// build the ThreeJS scene (start adding custom code there)
 		build_scene();
+		
+		// restore the krpano WebGL settings (for correct krpano rendering)
+		restore_krpano_WebGL_state();
 	}
 
 
@@ -160,6 +163,11 @@ function krpanoplugin()
 		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
 		gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
 		gl.pixelStorei(gl.UNPACK_ALIGNMENT, 4);
+		
+		// restore the current krpano WebGL program
+		krpano.webGL.restoreProgram();
+		
+		//renderer.resetGLState();
 	}
 
 
@@ -206,18 +214,6 @@ function krpanoplugin()
 		{
 			// disable the fisheye distortion, ThreeJS objects can't be rendered with it
 			krpano.view.fisheye = 0.0;
-		}
-
-		var webvr_plugin = krpano.get("plugin[webvr]");
-		if (webvr_plugin)
-		{
-			// disable the MobileVR fisheye distortion
-			if (webvr_plugin.mobilevr_lens_dist != 0.0)
-			{
-				// use a hardcoded alternative fov for the moment
-				webvr_plugin.mobilevr_lens_fov  = 88.0;
-				webvr_plugin.mobilevr_lens_dist = 0.0;
-			}
 		}
 	}
 
@@ -665,12 +661,17 @@ function krpanoplugin()
 				handle_mouse_hitobject = hitobj;
 			}
 
-			if (handle_mouse_hitobject || (krpano.display.stereo == false && krpano.display.hotspotrenderer != "webgl"))
+			if (handle_mouse_hitobject)// || (krpano.display.stereo == false && krpano.display.hotspotrenderer != "webgl"))
 			{
-				krpano.cursors.update(false, !!handle_mouse_hitobject);
+				krpano.control.layer.style.cursor = krpano.cursors.hit;
+			}
+			else
+			{
+				krpano.cursors.update();
 			}
 		}
 	}
+
 
 
 	function update_scene()
