@@ -23,7 +23,7 @@ var krpanoplugin = function()
 		//krpano.call("set(plugin[MotionGesture].curent_pano,scene[get(xml.scene)].name);")
 		//krpano.set(plugin[MotionGesture].curent_pano,scene[get(xml.scene)].name);
         //krpano.trace(1,"000000" + plugin.curent_pano);
-		/*
+		/**/
 		VR_LOOP();
 		function VR_LOOP() {
 			setTimeout(function(){
@@ -33,7 +33,7 @@ var krpanoplugin = function()
 				VR_LOOP();
 			}, 1000);
 		}
-		*/
+		
 		
 		if (window.DeviceOrientationEvent)
 		{

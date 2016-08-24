@@ -203,13 +203,13 @@
 	       backgroundcolor="0x000000"
 	       backgroundalpha="0.5"
 	       roundedge="calc:9*webvr_setup_scale*webvr_button_scale"
-	       css="calc:'color:#FFFFFF;font-size:' + 20*webvr_setup_scale*webvr_button_scale + 'px;'"
+	       css="calc:'color:#FFFFFF;font-family:tahoma;font-size:' + 20*webvr_setup_scale*webvr_button_scale + 'px;'"
 	       padding="calc:6*webvr_setup_scale*webvr_button_scale + ' ' + 10*webvr_setup_scale*webvr_button_scale"
 	       />
 	
 	<layer name="webvr_enterbutton" keep="true" vr="true"
 	       style="webvr_button_style"
-	       html="Enter VR"
+	       html="فعال سازی واقعیت مجازی"
 	       align="top" y="24"
 	       autoalpha="true" alpha="0.0"
 	       onclick="webvr.enterVR();"
@@ -217,7 +217,7 @@
 
 	<layer name="webvr_exitbutton" keep="true" vr="true"
 	       style="webvr_button_style"
-	       html="Exit VR"
+	       html="خروج از واقعیت مجازی"
 	       align="top" y="24"
 	       autoalpha="true" alpha="0.0"
 	       onclick="webvr.exitVR();"
