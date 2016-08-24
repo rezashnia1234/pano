@@ -33,7 +33,10 @@ var krpanoplugin = function()
 				VR_LOOP();
 			}, 1000);
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> parent of d71c487... 0
 		
 		if (window.DeviceOrientationEvent)
 		{

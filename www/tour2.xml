@@ -6,8 +6,6 @@
 		smgroup_startup();
 		start_vr();
 	</action>
-	<display mipmapping="off" />
-	
 	
 	<action name="smgroup_startup" type="Javascript" autorun="">
 		<![CDATA[
