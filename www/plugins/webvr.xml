@@ -195,10 +195,7 @@
 	
 	<layer name="webvr_enterbutton" keep="true" vr="true"
 	       style="webvr_button_style"
-<<<<<<< HEAD
-=======
 	       html0="Enter VR"
->>>>>>> parent of d71c487... 0
 	       html="فعال سازی واقعیت مجازی"
 	       align="top" y="24"
 	       autoalpha="true" alpha="0.0"
@@ -207,10 +204,7 @@
 
 	<layer name="webvr_exitbutton" keep="true" vr="true"
 	       style="webvr_button_style"
-<<<<<<< HEAD
-=======
 	       html0="Exit VR"
->>>>>>> parent of d71c487... 0
 	       html="خروج از واقعیت مجازی"
 	       align="top" y="24"
 	       autoalpha="true" alpha="0.0"
