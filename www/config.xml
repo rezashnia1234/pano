@@ -65,7 +65,7 @@
 	<!--Prevent the screen of the mobile device from falling asleep:-->
 	<!--<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />-->
 	<plugin spec="https://github.com/fiscal-cliff/phonegap-plugin-brightness.git" source="git" />
-	<plugin name="net.yoik.cordova.plugins.screenorientation"	source="pgb" />	
+	<plugin spec="https://github.com/gbenvenuti/cordova-plugin-screen-orientation.git" source="git" />
 	
 	
 	
