@@ -72,7 +72,7 @@
 	<!-- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" /> -->
     <!-- <gap:plugin name="com.phonegap.plugins.pushplugin" /> -->
 	<!-- <gap:plugin name="hu.dpal.phonegap.plugins.uniquedeviceid" /> -->
-	<gap:plugin name="com.phonegap.plugin.statusbar" />
+	<!-- <gap:plugin name="com.phonegap.plugin.statusbar" /> -->
 	<gap:config-file platform="ios" parent="UIStatusBarHidden">
 		<true/>
 	</gap:config-file>
