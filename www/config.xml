@@ -95,16 +95,31 @@
     <!-- Define app icon      -->
     <icon src="images/splash/icon.png" />
     <icon src="images/splash/ios.png" platform="ios" />
-	
-    <!-- Define app splash screen for each platform. -->
-	<!--<gap:splash src="images/splash/screen-hdpi-landscape.png" />-->
-	<!--
-	<gap:splash src="img/splash/splash_bkg.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
-	<gap:splash src="img/splash/splash_bkg_landscape.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
-	<gap:splash src="img/splash/splash_bkg.png" gap:platform="ios" width="1536" height="2048" />
-	<gap:splash src="img/splash/splash_bkg_landscape.png" gap:platform="ios" width="2048" height="1536" />
-	-->
-    <!-- Define app splash screen for each platform. -->
+
+	<icon src="images/splash/icon-57.png" width="57" height="57" gap:platform="ios" />
+	<icon src="images/splash/icon-57@2x.png" width="114" height="114" gap:platform="ios" />
+	<icon src="images/splash/icon-72.png" width="72" height="72" gap:platform="ios" />
+	<icon src="images/splash/icon-72@2x.png" width="152" height="152" gap:platform="ios" /> 
+
+	<!-- iPhone 6 / 6+ -->
+	<icon src="images/splash/icon-60@3x.png" platform="ios" width="180" height="180" />
+
+	<!-- iPhone / iPod Touch  -->
+	<icon src="images/splash/icon-60.png" platform="ios" width="60" height="60" />
+	<icon src="images/splash/icon-60@2x.png" platform="ios" width="120" height="120" />
+
+	<!-- iPad -->
+	<icon src="images/splash/icon-76.png" platform="ios" width="76" height="76" />
+	<icon src="images/splash/icon-76@2x.png" platform="ios" width="152" height="152" />
+
+	<!-- Settings Icon -->
+	<icon src="images/splash/icon-small.png" platform="ios" width="29" height="29" />
+	<icon src="images/splash/icon-small@2x.png" platform="ios" width="58" height="58" />
+
+	<!-- Spotlight Icon -->
+	<icon src="images/splash/icon-40.png" platform="ios" width="40" height="40" />
+	<icon src="images/splash/icon-40@2x.png" platform="ios" width="80" height="80" />
+
 	
     <gap:splash src="images/splash/screen-ldpi-landscape.png"		gap:platform="android" gap:density="ldpi" />
     <gap:splash src="images/splash/screen-mdpi-landscape.png"		gap:platform="android" gap:density="mdpi" />
